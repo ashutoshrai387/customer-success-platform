@@ -25,6 +25,10 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
     public DbSet<Organization> Organizations { get; set; }
     public DbSet<ClientFeedback> ClientFeedbacks { get; set; }
     public DbSet<ProjectBudget> ProjectBudgets { get; set; }
+    public DbSet<VersionHistory> VersionHistory { get; set; }
+    public DbSet<VersionHistory> AuditHistory { get; set; }
+    public DbSet<VersionHistory> ProjectDescription { get; set; }
+    public DbSet<VersionHistory> Scope { get; set; }
     public DbSet<PhaseMilestone> PhaseMilestones { get; set; }
     public DbSet<ProjectResources> ProjectResources { get; set; }
     public DbSet<RiskProfile> RiskProfiles { get; set; }
@@ -50,15 +54,15 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
 
         /* Configure your own entities here */
         builder.Entity<DocumentVersion>(entity =>
-        {                        
+        {
             entity.ConfigureByConvention();
         });
         builder.Entity<EscalationMatrix>(EscalationMatrix =>
-        {            
+        {
             EscalationMatrix.ConfigureByConvention();
         });
         builder.Entity<MeetingMinute>(MeetingMinute =>
-        {            
+        {
             MeetingMinute.ConfigureByConvention();
         });
         builder.Entity<Organization>(Organization =>
@@ -72,6 +76,22 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         builder.Entity<ProjectBudget>(ProjectBudget =>
         {
             ProjectBudget.ConfigureByConvention();
+        });
+        builder.Entity<VersionHistory>(VersionHistory =>
+        {
+            VersionHistory.ConfigureByConvention();
+        });
+        builder.Entity<AuditHistory>(AuditHistory =>
+        {
+            AuditHistory.ConfigureByConvention();
+        });
+        builder.Entity<ProjectDescription>(ProjectDescription =>
+        {
+            ProjectDescription.ConfigureByConvention();
+        });
+        builder.Entity<Scope>(Scope =>
+        {
+            Scope.ConfigureByConvention();
         });
         builder.Entity<ProjectResources>(ProjectResources =>
         {

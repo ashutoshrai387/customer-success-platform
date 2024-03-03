@@ -17,6 +17,16 @@ public class PlatformAutoMapperProfile : Profile
         CreateMap<CreateProjectBudgetDto, ProjectBudget>();
         CreateMap<UpdateProjectBudgetDto, ProjectBudget>();
         CreateMap<ProjectBudget, ProjectBudgetDto>().ReverseMap();
-        
+
+        /* AutoMapper object mapping for VersionHistory */
+        CreateMap<CreateVersionHistoryDto, VersionHistory>();
+        CreateMap<UpdateVersionHistoryDto, VersionHistory>();
+        CreateMap<VersionHistory, VersionHistoryDto>().ReverseMap();
+
+        /* AutoMapper object mapping for AuditHistory */
+        CreateMap<CreateAuditHistoryDto, AuditHistory>();
+        CreateMap<UpdateAuditHistoryDto, AuditHistory>();
+        CreateMap<AuditHistory, AuditHistoryDto>().ReverseMap();
+
     }
 }
