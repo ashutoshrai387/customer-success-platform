@@ -12,5 +12,11 @@ public class PlatformAutoMapperProfile : Profile
         CreateMap<CreateProjectDto, Project>();
         CreateMap<UpdateProjectDto, Project>();
         CreateMap<Project, ProjectDto>().ReverseMap();
+
+        /* AutoMapper object mapping for ProjectBudget */
+        CreateMap<CreateProjectBudgetDto, ProjectBudget>();
+        CreateMap<UpdateProjectBudgetDto, ProjectBudget>();
+        CreateMap<ProjectBudget, ProjectBudgetDto>().ReverseMap();
+        
     }
 }
