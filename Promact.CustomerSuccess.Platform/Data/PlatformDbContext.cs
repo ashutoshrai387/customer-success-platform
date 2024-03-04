@@ -33,6 +33,7 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
     public DbSet<PhaseMilestone> PhaseMilestones { get; set; }
     public DbSet<ProjectResources> ProjectResources { get; set; }
     public DbSet<RiskProfile> RiskProfiles { get; set; }
+    public DbSet<RemediationStep> RemediationStep { get; set; }
     public DbSet<MeetingMinute> MeetingMinutes { get; set; }
     public DbSet<EscalationMatrix> EscalationMatrices { get; set; }
     public DbSet<Sprint> Sprints { get; set; }
@@ -114,6 +115,10 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         {
             RiskProfile.ConfigureByConvention();
         });
+        builder.Entity<RemediationStep>(RemediationStep =>
+        {
+            RemediationStep.ConfigureByConvention();
+        });
         builder.Entity<Sprint>(Sprint =>
         {
             Sprint.ConfigureByConvention();
@@ -134,7 +139,6 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         {
             ApplicationUser.ConfigureByConvention();
         });
-
 
     }
 }

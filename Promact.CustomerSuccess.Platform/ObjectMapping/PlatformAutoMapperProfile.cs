@@ -43,5 +43,20 @@ public class PlatformAutoMapperProfile : Profile
         CreateMap<UpdateProjectStackDto, ProjectStack>();
         CreateMap<ProjectStack, ProjectStackDto>().ReverseMap();
 
+        /* AutoMapper object mapping for EscalationMatrix */
+        CreateMap<CreateEscalationMatrixDto, EscalationMatrix>();
+        CreateMap<UpdateEscalationMatrixDto, EscalationMatrix>();
+        CreateMap<EscalationMatrix, EscalationMatrixDto>().ReverseMap();
+
+        /* AutoMapper object mapping for RiskProfile */
+        CreateMap<CreateRiskProfileDto, RiskProfile>();
+        CreateMap<UpdateRiskProfileDto, RiskProfile>();
+        CreateMap<RiskProfile, RiskProfileDto>().ReverseMap();
+
+        /* AutoMapper object mapping for RiskProfile */
+        CreateMap<CreateRemediationStepDto, RemediationStep>();
+        CreateMap<UpdateRemediationStepDto, RemediationStep>();
+        CreateMap<RemediationStep, RemediationStepDto>().ReverseMap();
+
     }
 }
