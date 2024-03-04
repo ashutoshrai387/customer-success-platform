@@ -26,9 +26,10 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
     public DbSet<ClientFeedback> ClientFeedbacks { get; set; }
     public DbSet<ProjectBudget> ProjectBudgets { get; set; }
     public DbSet<VersionHistory> VersionHistory { get; set; }
-    public DbSet<VersionHistory> AuditHistory { get; set; }
-    public DbSet<VersionHistory> ProjectDescription { get; set; }
-    public DbSet<VersionHistory> Scope { get; set; }
+    public DbSet<AuditHistory> AuditHistory { get; set; }
+    public DbSet<ProjectDescription> ProjectDescription { get; set; }
+    public DbSet<Scope> Scope { get; set; }
+    public DbSet<ProjectStack> ProjectStack { get; set; }
     public DbSet<PhaseMilestone> PhaseMilestones { get; set; }
     public DbSet<ProjectResources> ProjectResources { get; set; }
     public DbSet<RiskProfile> RiskProfiles { get; set; }
@@ -41,6 +42,14 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+        builder.Entity<PhaseMilestone>()
+        .HasOne(p => p.Project)
+        .WithMany()
+        .HasForeignKey(p => p.ProjectId);
+        builder.Entity<PhaseMilestone>()
+        .HasMany(p => p.Sprints)    // Indicates that PhaseMilestone has many Sprints
+        .WithOne(s => s.PhaseMilestone)  // Indicates that Sprint belongs to one PhaseMilestone
+        .HasForeignKey(s => s.PhaseMilestoneId);
 
         /* Include modules to your migration db context */
 
@@ -92,6 +101,10 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         builder.Entity<Scope>(Scope =>
         {
             Scope.ConfigureByConvention();
+        });
+        builder.Entity<ProjectStack>(ProjectStack =>
+        {
+            ProjectStack.ConfigureByConvention();
         });
         builder.Entity<ProjectResources>(ProjectResources =>
         {

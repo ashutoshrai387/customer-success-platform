@@ -28,5 +28,20 @@ public class PlatformAutoMapperProfile : Profile
         CreateMap<UpdateAuditHistoryDto, AuditHistory>();
         CreateMap<AuditHistory, AuditHistoryDto>().ReverseMap();
 
+        /* AutoMapper object mapping for ProjectDescription */
+        CreateMap<CreateProjectDescriptionDto, ProjectDescription>();
+        CreateMap<UpdateProjectDescriptionDto, ProjectDescription>();
+        CreateMap<ProjectDescription, ProjectDescriptionDto>().ReverseMap();
+
+        /* AutoMapper object mapping for scope */
+        CreateMap<CreateScopeDto, Scope>();
+        CreateMap<UpdateScopeDto, Scope>();
+        CreateMap<Scope, ScopeDto>().ReverseMap();
+
+        /* AutoMapper object mapping for ProjectStack */
+        CreateMap<CreateProjectStackDto, ProjectStack>();
+        CreateMap<UpdateProjectStackDto, ProjectStack>();
+        CreateMap<ProjectStack, ProjectStackDto>().ReverseMap();
+
     }
 }
