@@ -36,6 +36,7 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
     public DbSet<RemediationStep> RemediationStep { get; set; }
     public DbSet<MeetingMinute> MeetingMinutes { get; set; }
     public DbSet<EscalationMatrix> EscalationMatrices { get; set; }
+    public DbSet<Stakeholder> Stakeholders { get; set; }
     public DbSet<Sprint> Sprints { get; set; }
     public DbSet<DetTimeRef> DetailedTimelineReference { get; set; }
     public DbSet<ApplicationUser> Users { get; set; }
@@ -102,6 +103,10 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         builder.Entity<ProjectResources>(ProjectResources =>
         {
             ProjectResources.ConfigureByConvention();
+        });
+        builder.Entity<Stakeholder>(Stakeholder =>
+        {
+            Stakeholder.ConfigureByConvention();
         });
         builder.Entity<RiskProfile>(RiskProfile =>
         {

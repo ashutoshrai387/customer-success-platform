@@ -48,6 +48,11 @@ public class PlatformAutoMapperProfile : Profile
         CreateMap<UpdateEscalationMatrixDto, EscalationMatrix>();
         CreateMap<EscalationMatrix, EscalationMatrixDto>().ReverseMap();
 
+        /* AutoMapper object mapping for Stakeholder */
+        CreateMap<CreateStakeholderDto, Stakeholder>();
+        CreateMap<UpdateStakeholderDto, Stakeholder>();
+        CreateMap<Stakeholder, StakeholderDto>().ReverseMap();
+
         /* AutoMapper object mapping for RiskProfile */
         CreateMap<CreateRiskProfileDto, RiskProfile>();
         CreateMap<UpdateRiskProfileDto, RiskProfile>();

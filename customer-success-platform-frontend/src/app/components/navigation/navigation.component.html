@@ -1,0 +1,28 @@
+<!-- navigation.component.html -->
+
+    <!-- Top Navbar -->
+    <nav class="top-navbar">
+      <div class="left-section">
+        <img src="/src/assets/logo/icon.png" alt="Customer Support" > <!-- Example icon -->
+        <span class="brand">Customer <br> Success</span>
+      </div>
+      <div class="right-section">
+        <button class="export-btn">Export PDF</button> <!-- Export PDF button -->
+      </div>
+    </nav>
+  
+    <!-- Left Navbar -->
+    <aside class="left-navbar">
+      <ul>
+        <li><a routerLink="/navigation/component1">Component 1</a></li>
+        <li><a routerLink="/navigation/component2">Component 2</a></li>
+        <!-- Add more options as needed -->
+      </ul>
+    </aside>
+  
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+
+  

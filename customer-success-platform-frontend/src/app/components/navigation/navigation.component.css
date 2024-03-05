@@ -1,0 +1,65 @@
+/* navigation.component.css */
+
+
+.top-navbar {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .top-navbar .left-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .top-navbar .right-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .brand {
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  
+  .export-btn {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .left-navbar {
+    background-color: #ffffff;
+    margin-top: 20px;
+    padding: 10px;
+    height: 100%;
+    width: 200px;
+    position:fixed;
+  }
+  
+  .left-navbar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .left-navbar li {
+    margin-bottom: 10px;
+  }
+  
+  .left-navbar a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .main-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  
