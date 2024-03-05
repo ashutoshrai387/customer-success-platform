@@ -53,10 +53,25 @@ public class PlatformAutoMapperProfile : Profile
         CreateMap<UpdateRiskProfileDto, RiskProfile>();
         CreateMap<RiskProfile, RiskProfileDto>().ReverseMap();
 
-        /* AutoMapper object mapping for RiskProfile */
+        /* AutoMapper object mapping for RemediationStep */
         CreateMap<CreateRemediationStepDto, RemediationStep>();
         CreateMap<UpdateRemediationStepDto, RemediationStep>();
         CreateMap<RemediationStep, RemediationStepDto>().ReverseMap();
+
+        /* AutoMapper object mapping for PhaseMilestone */
+        CreateMap<CreatePhaseMilestoneDto, PhaseMilestone>();
+        CreateMap<UpdatePhaseMilestoneDto, PhaseMilestone>();
+        CreateMap<PhaseMilestone, PhaseMilestoneDto>().ReverseMap();
+
+        /* AutoMapper object mapping for Sprint*/
+        CreateMap<CreateSprintDto, Sprint>();
+        CreateMap<UpdateSprintDto, Sprint>();
+        CreateMap<Sprint, SprintDto>().ReverseMap();
+
+        /* AutoMapper object mapping for Detailed Timeline Reference*/
+        CreateMap<CreateDetTimeRefDto, DetTimeRef>();
+        CreateMap<UpdateDetTimeRefDto, DetTimeRef>();
+        CreateMap<DetTimeRef, DetTimeRefDto>().ReverseMap();
 
     }
 }

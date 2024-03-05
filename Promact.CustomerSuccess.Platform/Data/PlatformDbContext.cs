@@ -37,20 +37,12 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
     public DbSet<MeetingMinute> MeetingMinutes { get; set; }
     public DbSet<EscalationMatrix> EscalationMatrices { get; set; }
     public DbSet<Sprint> Sprints { get; set; }
+    public DbSet<DetTimeRef> DetailedTimelineReference { get; set; }
     public DbSet<ApplicationUser> Users { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        base.OnModelCreating(builder);
-        builder.Entity<PhaseMilestone>()
-        .HasOne(p => p.Project)
-        .WithMany()
-        .HasForeignKey(p => p.ProjectId);
-        builder.Entity<PhaseMilestone>()
-        .HasMany(p => p.Sprints)    // Indicates that PhaseMilestone has many Sprints
-        .WithOne(s => s.PhaseMilestone)  // Indicates that Sprint belongs to one PhaseMilestone
-        .HasForeignKey(s => s.PhaseMilestoneId);
 
         /* Include modules to your migration db context */
 
@@ -134,6 +126,10 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         builder.Entity<Document>(Document =>
         {
             Document.ConfigureByConvention();
+        });
+        builder.Entity<DetTimeRef>(DetTimeRef =>
+        {
+            DetTimeRef.ConfigureByConvention();
         });
         builder.Entity<ApplicationUser>(ApplicationUser =>
         {
