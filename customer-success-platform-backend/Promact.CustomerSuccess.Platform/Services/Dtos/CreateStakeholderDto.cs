@@ -13,5 +13,8 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
 
         [Required]
         public string Contact { get; set; }
+
+        [Required]
+        public string Email { get; set; }
     }
 }

@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectService {
+export class AuditHistoryService {
   
-  private apiUrl = 'https://localhost:44347/api/app/project';
+  private apiUrl = 'https://localhost:44347/api/app/audit-history';
 
   constructor(private http: HttpClient) { }
 

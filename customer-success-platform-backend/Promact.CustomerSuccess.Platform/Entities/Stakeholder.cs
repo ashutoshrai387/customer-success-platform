@@ -8,5 +8,6 @@ namespace Promact.CustomerSuccess.Platform.Entities
         public string Title { get; set; }
         public string Name { get; set; }
         public string Contact { get; set; }
+        public string Email { get; set; }
     }
 }

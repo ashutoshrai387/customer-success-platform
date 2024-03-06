@@ -6,18 +6,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from "@angular/router/testing";
 import { ProjectComponent } from './components/project/project.component';
 import { ProjectService } from './services/project.service';
+import { AuditHistoryComponent } from './components/audit-history/audit-history.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    ProjectComponent
+    ProjectComponent,
+    AuditHistoryComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([]),
+    RouterModule,
+    RouterTestingModule,
     FormsModule,
     HttpClientModule
   ],

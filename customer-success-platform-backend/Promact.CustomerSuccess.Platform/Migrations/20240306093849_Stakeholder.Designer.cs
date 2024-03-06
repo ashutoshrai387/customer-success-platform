@@ -12,7 +12,7 @@ using Promact.CustomerSuccess.Platform.Data;
 namespace Promact.CustomerSuccess.Platform.Migrations
 {
     [DbContext(typeof(PlatformDbContext))]
-    [Migration("20240305092812_Stakeholder")]
+    [Migration("20240306093849_Stakeholder")]
     partial class Stakeholder
     {
         /// <inheritdoc />
@@ -925,6 +925,10 @@ namespace Promact.CustomerSuccess.Platform.Migrations
                     b.Property<Guid?>("CreatorId")
                         .HasColumnType("uuid")
                         .HasColumnName("CreatorId");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<DateTime?>("LastModificationTime")
                         .HasColumnType("timestamp without time zone")

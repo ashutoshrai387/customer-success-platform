@@ -1,0 +1,35 @@
+<div>
+    <h1>Audit History</h1>
+      <table>
+        <thead>
+          <tr>
+            <th class="hidden">ID</th>
+            <th>DateOfAudit</th>
+            <th>ReviewedBy</th>
+            <th>Status</th>
+            <th>ReviewedSection</th>
+            <th>CommentQueries</th>
+            <th>ActionItem</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of audits; let i = index">
+            <td class="hidden"><input type="text" [(ngModel)]="item.Id" [disabled]="!item.editing"></td>
+            <td><input type="text" [(ngModel)]="item.DateOfAudit" [disabled]="!item.editing"></td>
+            <td><input type="text" [(ngModel)]="item.ReviewedBy" [disabled]="!item.editing"></td>
+            <td><input type="text" [(ngModel)]="item.Status" [disabled]="!item.editing"></td>
+            <td><input type="text" [(ngModel)]="item.ReviewedSection" [disabled]="!item.editing"></td>
+            <td><input type="text" [(ngModel)]="item.CommentQueries" [disabled]="!item.editing"></td>
+            <td><input type="text" [(ngModel)]="item.ActionItem" [disabled]="!item.editing"></td>
+            <td>
+              <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
+              <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.Id)">Save</button>
+              <button class="red" (click)="deleteItem(i, item.Id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    
+      <button class="green" (click)="addItem()">Add</button>
+    </div>

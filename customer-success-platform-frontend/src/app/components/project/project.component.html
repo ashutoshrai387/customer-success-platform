@@ -1,9 +1,9 @@
-<!-- project.component.html -->
-
 <div>
+  <h1>Project</h1>
     <table>
       <thead>
         <tr>
+          <th class="hidden">ID</th>
           <th>Name</th>
           <th>Description</th>
           <th>Action</th>
@@ -11,16 +11,17 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of projects; let i = index">
+          <td class="hidden"><input type="text" [(ngModel)]="item.Id" [disabled]="!item.editing"></td>
           <td><input type="text" [(ngModel)]="item.Name" [disabled]="!item.editing"></td>
           <td><input type="text" [(ngModel)]="item.Description" [disabled]="!item.editing"></td>
           <td>
-            <button *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
-            <button *ngIf="item.editing" (click)="saveItem(i)">Save</button>
-            <button (click)="deleteItem(i)">Delete</button>
+            <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
+            <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.Id)">Save</button>
+            <button class="red" (click)="deleteItem(i, item.Id)">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
   
-    <button (click)="addItem()">Add</button>
+    <button class="green" (click)="addItem()">Add</button>
   </div>

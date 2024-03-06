@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+loadComponent($event: Event) {
+throw new Error('Method not implemented.');
+}
   title = "Customer Success Platform";
 }
