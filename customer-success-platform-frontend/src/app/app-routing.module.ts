@@ -1,19 +1,16 @@
-// app-routing.module.ts
+// import { NgModule } from '@angular/core';
+// import { RouterModule, Routes } from '@angular/router';
+// import { ProjectComponent } from './components/project/project.component';
+// import { AuditHistoryComponent } from './components/audit-history/audit-history.component';
 
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { ProjectComponent } from './components/project/project.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
+// export const routes: Routes = [
+//   { path: '/', component: ProjectComponent },
+//   { path: 'project', component:  ProjectComponent },
+//   { path: 'audithistory', component:  AuditHistoryComponent},
+// ];
 
-export const routes: Routes = [
-  { path: '', component: NavigationComponent ,
-      children: [
-    { path: '', component:  ProjectComponent },
-  ]},
-];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+// @NgModule({
+//   imports: [RouterModule.forRoot(routes)],
+//   exports: [RouterModule]
+// })
+// export class AppRoutingModule { }

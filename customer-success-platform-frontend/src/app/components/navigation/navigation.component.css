@@ -3,10 +3,12 @@
     color: #000000;
     border-bottom: 5px solid #000000;
     padding: 10px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
+    position:fixed;
+    top: 0;
   }
   
   .top-navbar .left-section {
@@ -28,6 +30,7 @@
     background-color: #4caf50;
     color: #fff;
     border: none;
+    margin-right: 20px;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -45,7 +48,8 @@
     height: 100%;
     width: 200px;
     position:fixed;
-    z-index: 100;
+    top: 61px;
+    /* z-index: 100; */
   }
   
   .left-navbar ul {
@@ -71,8 +75,9 @@
   }
   
   .main-content {
-    flex: 1;
+    /* flex: 1;
     overflow-y: auto;
-    padding: 10px;
+    padding: 10px; */
+    padding: 60px 20px 0 245px;
   }
   

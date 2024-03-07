@@ -10,6 +10,7 @@ import { RouterTestingModule } from "@angular/router/testing";
 import { ProjectComponent } from './components/project/project.component';
 import { ProjectService } from './services/project.service';
 import { AuditHistoryComponent } from './components/audit-history/audit-history.component';
+import { AuditHistoryService } from './services/audithistory.service';
 
 @NgModule({
   declarations: [
@@ -23,11 +24,13 @@ import { AuditHistoryComponent } from './components/audit-history/audit-history.
     RouterModule,
     RouterTestingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     provideClientHydration(),
-    ProjectService
+    ProjectService,
+    AuditHistoryService,
+    RouterModule,
   ],
   bootstrap: [AppComponent]
 })
