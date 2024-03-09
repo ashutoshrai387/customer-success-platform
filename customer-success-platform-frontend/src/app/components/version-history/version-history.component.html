@@ -1,0 +1,39 @@
+<h1>Version History</h1>
+<div>
+      <table>
+        <thead>
+          <tr>
+            <th class="hidden">ID</th>
+            <th>Version</th>
+            <th>Type</th>
+            <th>Change</th>
+            <th>Change Reason</th>
+            <th>Created By</th>
+            <th>Revision Date</th>
+            <th>Approval Date</th>
+            <th>Approved By</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of versions; let i = index">
+            <td class="hidden"><input type="text" [(ngModel)]="item.id" [disabled]="!item.editing"></td>
+            <td><input type="text" [(ngModel)]="item.version" [disabled]="!item.editing"></td>
+            <td><input type="text" [(ngModel)]="item.type" [disabled]="!item.editing"></td>
+            <td><input type="text" [(ngModel)]="item.change" [disabled]="!item.editing"></td>
+            <td><input type="text" [(ngModel)]="item.changeReason" [disabled]="!item.editing"></td>
+            <td><input type="text" [(ngModel)]="item.createdBy" [disabled]="!item.editing"></td>
+            <td><input type="text" [(ngModel)]="item.revisionDate" [disabled]="!item.editing"></td>
+            <td><input type="text" [(ngModel)]="item.approvalDate" [disabled]="!item.editing"></td>
+            <td><input type="text" [(ngModel)]="item.approvedBy" [disabled]="!item.editing"></td>
+            <td>
+              <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
+              <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>
+              <button class="red" (click)="deleteItem(i, item.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    
+      <button class="green" (click)="addItem()">Add</button>
+    </div>

@@ -4,20 +4,23 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from "@angular/router/testing";
 import { ProjectComponent } from './components/project/project.component';
-import { ProjectService } from './services/project.service';
+import { CustomerSuccessService } from './services/customer-success.service';
 import { AuditHistoryComponent } from './components/audit-history/audit-history.component';
-import { AuditHistoryService } from './services/audithistory.service';
+import { VersionHistoryComponent } from './components/version-history/version-history.component';
+import { ProjectDescriptionComponent } from './components/project-description/project-description.component';
+import { ScopeComponent } from './components/scope/scope.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
     ProjectComponent,
-    AuditHistoryComponent
+    AuditHistoryComponent,
+    VersionHistoryComponent,
+    ProjectDescriptionComponent,
+    ScopeComponent
   ],
   imports: [
     BrowserModule,
@@ -28,8 +31,7 @@ import { AuditHistoryService } from './services/audithistory.service';
   ],
   providers: [
     provideClientHydration(),
-    ProjectService,
-    AuditHistoryService,
+    CustomerSuccessService,
     RouterModule,
   ],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { AuditHistoryService } from '../../services/audithistory.service';
+import { CustomerSuccessService } from '../../services/customer-success.service';
 
 @Component({
   selector: 'app-audit-history',
@@ -8,10 +8,11 @@ import { AuditHistoryService } from '../../services/audithistory.service';
 })
 export class AuditHistoryComponent implements OnInit{
 
+    private apiUrl = 'https://localhost:44347/api/app/audit-history';
     audits: any[] = [];
     newItem: any = {DateOfAudit: '', ReviewedBy: '',Status: '', ReviewedSection: '',CommentQueries: '', ActionItem: ''};
   
-    constructor(private auditService: AuditHistoryService) { }
+    constructor(private auditService: CustomerSuccessService) { }
   
     ngOnInit(): void {
       this.loadProjects();
@@ -19,7 +20,7 @@ export class AuditHistoryComponent implements OnInit{
   
     loadProjects(): void {
       console.log('Loading projects');
-      this.auditService.getProjects().subscribe(
+      this.auditService.getProjects(this.apiUrl).subscribe(
         (data) => {
           console.log('Audit History:', data.items);
           this.audits = data.items.map((item: any) => ({ Id: item.id, DateOfAudit: item.dateOfAudit, ReviewedBy: item.reviewedBy,Status: item.status, ReviewedSection: item.reviewedSection, CommentQueries: item.commentQueries,ActionItem: item.actionItem }));
@@ -45,7 +46,7 @@ export class AuditHistoryComponent implements OnInit{
         // Update existing project
         
       console.log('Updating project with id:', id); 
-        this.auditService.updateProject(id, project).subscribe({
+        this.auditService.updateProject(this.apiUrl, id, project).subscribe({
           next: () => {
             project.editing = false; // Exit editing mode
             this.loadProjects(); // Reload projects
@@ -57,7 +58,7 @@ export class AuditHistoryComponent implements OnInit{
       } else {
         // Add new project
         console.log('Adding project'); 
-        this.auditService.addProject(project).subscribe({
+        this.auditService.addProject(this.apiUrl, project).subscribe({
           next: () => {
             project.editing = false; // Exit editing mode
             this.loadProjects(); // Reload projects
@@ -73,7 +74,7 @@ export class AuditHistoryComponent implements OnInit{
     deleteItem(index: number,id: string): void {
       console.log('Deleting project with id:', id); 
       const project = this.audits[index];
-      this.auditService.deleteProject(id).subscribe(
+      this.auditService.deleteProject(this.apiUrl, id).subscribe(
         () => {
           this.audits.splice(index, 1); // Remove project from projects array
           console.log('Project deleted:', project);

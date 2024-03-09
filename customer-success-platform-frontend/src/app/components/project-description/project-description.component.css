@@ -1,7 +1,4 @@
-div {
-    overflow: auto;
-  }
-  table {
+table {
     width: 100%;
     border-collapse: collapse;
     }
@@ -15,10 +12,10 @@ div {
     th {
       background-color: #f2f2f2;
     }
-    
+/*     
     .hidden {
       display: none;
-    }
+    } */
   
     button {
       margin-top: 10px;
@@ -47,3 +44,5 @@ div {
       border-radius: 5px;
       border: 1px solid #ddd;
     }
+  
+    

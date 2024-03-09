@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavigationComponent } from './navigation.component';
+import { VersionHistoryComponent } from './version-history.component';
 
-describe('NavigationComponent', () => {
-  let component: NavigationComponent;
-  let fixture: ComponentFixture<NavigationComponent>;
+describe('VersionHistoryComponent', () => {
+  let component: VersionHistoryComponent;
+  let fixture: ComponentFixture<VersionHistoryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NavigationComponent]
+      declarations: [VersionHistoryComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(NavigationComponent);
+    fixture = TestBed.createComponent(VersionHistoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
