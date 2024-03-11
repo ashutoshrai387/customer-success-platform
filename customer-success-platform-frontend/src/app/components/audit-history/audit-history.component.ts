@@ -10,7 +10,7 @@ export class AuditHistoryComponent implements OnInit{
 
     private apiUrl = 'https://localhost:44347/api/app/audit-history';
     audits: any[] = [];
-    newItem: any = {DateOfAudit: '', ReviewedBy: '',Status: '', ReviewedSection: '',CommentQueries: '', ActionItem: ''};
+    newItem: any = {'Date Of Audit': '', 'Reviewed By': '',Status: '', 'Reviewed Section': '','Comment Queries': '', 'Action Item': ''};
   
     constructor(private auditService: CustomerSuccessService) { }
   
@@ -23,7 +23,8 @@ export class AuditHistoryComponent implements OnInit{
       this.auditService.getProjects(this.apiUrl).subscribe(
         (data) => {
           console.log('Audit History:', data.items);
-          this.audits = data.items.map((item: any) => ({ Id: item.id, DateOfAudit: item.dateOfAudit, ReviewedBy: item.reviewedBy,Status: item.status, ReviewedSection: item.reviewedSection, CommentQueries: item.commentQueries,ActionItem: item.actionItem }));
+          // this.audits = data.items.map((item: any) => ({ Id: item.id, DateOfAudit: item.dateOfAudit, ReviewedBy: item.reviewedBy,Status: item.status, ReviewedSection: item.reviewedSection, CommentQueries: item.commentQueries,ActionItem: item.actionItem }));
+        this.audits = data.items;
         },
         (error) => {
           console.log('Error fetching projects:', error);

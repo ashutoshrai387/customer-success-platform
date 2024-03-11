@@ -1,17 +1,24 @@
-<h1>Scope</h1>
+<h1>Project Stack</h1>
 <div>
       <table>
         <thead>
           <tr>
             <th class="hidden">ID</th>
             <th>Link</th>
-            <th>Action</th>
+            <th>Name</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of scopes; let i = index">
+          <tr *ngFor="let item of projectStacks; let i = index">
             <td class="hidden"><input type="text" [(ngModel)]="item.id" [readOnly]="!item.editing"></td>
-            <td><input type="text" [(ngModel)]="item.link" [readOnly]="!item.editing"></td>
+            <!-- <td><input type="select" [(ngModel)]="item.name" [readOnly]="!item.editing"></td> -->
+            <td><select [(ngModel)]="item.name" [disabled]="!item.editing">
+              <option value="Backend">Backend</option>
+              <option value="Frontend">Frontend</option>
+              <option value="Mobile App">Mobile App</option>
+              <option value="Database">Database</option>
+              <option value="Infrastructure and Services">Infrastructure and Services</option>
+            </select></td>
             <td>
               <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
               <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>

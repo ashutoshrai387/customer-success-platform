@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CustomerSuccessService } from '../../services/customer-success.service';
 
 @Component({
-  selector: 'app-project',
-  templateUrl: './project.component.html',
-  styleUrls: ['./project.component.css']
+  selector: 'app-project-stack',
+  templateUrl: './project-stack.component.html',
+  styleUrl: './project-stack.component.css'
 })
-export class ProjectComponent implements OnInit {
+export class ProjectStackComponent {
 
-  apiUrl: string = 'https://localhost:44347/api/app/project';
-  projects: any[] = [];
-  newItem: any = {Name: '', Description: ''};
+  apiUrl: string = 'https://localhost:44347/api/app/project-stack';
+  projectStacks: any[] = [];
+  newItem: any = {Description: ''};
 
-  constructor(private projectService: CustomerSuccessService) { }
+  constructor(private projectStackService: CustomerSuccessService) { }
 
   ngOnInit(): void {
     this.loadProjects();
@@ -20,11 +20,11 @@ export class ProjectComponent implements OnInit {
 
   loadProjects(): void {
     console.log('Loading projects');
-    this.projectService.getProjects(this.apiUrl).subscribe(
+    this.projectStackService.getProjects(this.apiUrl).subscribe(
       (data) => {
         console.log('Projects:', data.items);
-        // this.projects = data.items.map((item: any) => ({ Id: item.id, Name: item.name, Description: item.description }));
-        this.projects = data.items;
+        // this.projects = data.items.map((item: any) => ({ Id: item.id, Description: item.description }));
+        this.projectStacks = data.items;
       },
       (error) => {
         console.log('Error fetching projects:', error);
@@ -33,21 +33,21 @@ export class ProjectComponent implements OnInit {
   }
 
   addItem(): void {
-    this.projects.push({ ...this.newItem, editing: true });
+    this.projectStacks.push({ ...this.newItem, editing: true });
     this.newItem = { Name: '', Description: '' }; // Clear newItem after adding
   }
 
   editItem(index: number): void {
-    this.projects[index].editing = true;
+    this.projectStacks[index].editing = true;
   }
 
   saveItem(index: number, id : string): void {
-    const project = this.projects[index];
+    const project = this.projectStacks[index];
     if (id) {
       // Update existing project
       
     console.log('Updating project with id:', id); 
-      this.projectService.updateProject(this.apiUrl, id, project).subscribe({
+      this.projectStackService.updateProject(this.apiUrl, id, project).subscribe({
         next: () => {
           project.editing = false; // Exit editing mode
           this.loadProjects(); // Reload projects
@@ -59,7 +59,7 @@ export class ProjectComponent implements OnInit {
     } else {
       // Add new project
       console.log('Adding project'); 
-      this.projectService.addProject(this.apiUrl, project).subscribe({
+      this.projectStackService.addProject(this.apiUrl, project).subscribe({
         next: () => {
           project.editing = false; // Exit editing mode
           this.loadProjects(); // Reload projects
@@ -74,10 +74,10 @@ export class ProjectComponent implements OnInit {
 
   deleteItem(index: number,id: string): void {
     console.log('Deleting project with id:', id); 
-    const project = this.projects[index];
-    this.projectService.deleteProject(this.apiUrl, id).subscribe(
+    const project = this.projectStacks[index];
+    this.projectStackService.deleteProject(this.apiUrl, id).subscribe(
       () => {
-        this.projects.splice(index, 1); // Remove project from projects array
+        this.projectStacks.splice(index, 1); // Remove project from projects array
         console.log('Project deleted:', project);
         this.loadProjects();
       },

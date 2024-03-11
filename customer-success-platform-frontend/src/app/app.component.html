@@ -1,3 +1,4 @@
+<div #content>
 <!-- Top Navbar -->
 <nav class="top-navbar">
     <div class="left-section">
@@ -5,7 +6,7 @@
         <span class="brand">Customer <br> Success</span>
     </div>
     <div class="right-section">
-        <button class="export-btn">Export PDF</button>
+        <button class="export-btn" (click)="exportPdf()">Export PDF</button>
     </div>
 </nav>
 <div class="divider"></div>
@@ -17,6 +18,7 @@
         <li><a routerLink="/versionhistory">Version History</a></li>
         <li><a routerLink="/projectdescription">Project Description</a></li>
         <li><a routerLink="/scope">Scope</a></li>
+        <li><a routerLink="/projectstack">Project Stack</a></li>
 
         
         <!-- Add more options as needed -->
@@ -30,5 +32,6 @@
     <app-version-history></app-version-history>
     <app-project-description></app-project-description>
     <app-scope></app-scope>
+    <app-project-stack></app-project-stack>
     <router-outlet></router-outlet>
-</div>
+</div></div>

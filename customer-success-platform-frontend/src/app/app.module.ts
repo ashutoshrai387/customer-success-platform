@@ -12,6 +12,7 @@ import { AuditHistoryComponent } from './components/audit-history/audit-history.
 import { VersionHistoryComponent } from './components/version-history/version-history.component';
 import { ProjectDescriptionComponent } from './components/project-description/project-description.component';
 import { ScopeComponent } from './components/scope/scope.component';
+import { ProjectStackComponent } from './components/project-stack/project-stack.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ScopeComponent } from './components/scope/scope.component';
     AuditHistoryComponent,
     VersionHistoryComponent,
     ProjectDescriptionComponent,
-    ScopeComponent
+    ScopeComponent,
+    ProjectStackComponent
   ],
   imports: [
     BrowserModule,

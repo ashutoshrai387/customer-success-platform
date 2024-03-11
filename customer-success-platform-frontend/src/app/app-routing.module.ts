@@ -5,6 +5,7 @@ import { AuditHistoryComponent } from './components/audit-history/audit-history.
 import { VersionHistoryComponent } from './components/version-history/version-history.component';
 import { ProjectDescriptionComponent } from './components/project-description/project-description.component';
 import { ScopeComponent } from './components/scope/scope.component';
+import { ProjectStackComponent } from './components/project-stack/project-stack.component';
 
 export const routes: Routes = [
   { path: '/', component: ProjectComponent },
@@ -13,6 +14,7 @@ export const routes: Routes = [
   { path: 'versionhistory', component:  VersionHistoryComponent},
   { path: 'projectdescription', component:  ProjectDescriptionComponent},
   { path: 'scope', component:  ScopeComponent},
+  { path: 'projectstack', component:  ProjectStackComponent},
 ];
 
 @NgModule({
