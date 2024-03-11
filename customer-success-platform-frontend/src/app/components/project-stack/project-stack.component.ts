@@ -10,7 +10,7 @@ export class ProjectStackComponent {
 
   apiUrl: string = 'https://localhost:44347/api/app/project-stack';
   projectStacks: any[] = [];
-  newItem: any = {Description: ''};
+  newItem: any = {Name: ''};
 
   constructor(private projectStackService: CustomerSuccessService) { }
 
@@ -19,11 +19,11 @@ export class ProjectStackComponent {
   }
 
   loadProjects(): void {
-    console.log('Loading projects');
+    console.log('Loading stacks');
     this.projectStackService.getProjects(this.apiUrl).subscribe(
       (data) => {
-        console.log('Projects:', data.items);
-        // this.projects = data.items.map((item: any) => ({ Id: item.id, Description: item.description }));
+        console.log('Project Stacks:', data.items);
+        // this.projects = data.items.map((item: any) => ({ Id: item.id, Name: item.name }));
         this.projectStacks = data.items;
       },
       (error) => {

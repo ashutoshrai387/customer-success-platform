@@ -10,6 +10,8 @@ namespace Promact.CustomerSuccess.Platform.Entities
         public DateTime FeedbackDate { get; set; }
         public FeedbackType FeedbackType { get; set; }
         public required string Details { get; set; }
+        public required string ActionTaken { get; set; }
+        public DateTime ClosureDate { get; set; }
         public virtual Project? Project { get; set; }
     }
 }

@@ -10,7 +10,7 @@ export class ScopeComponent {
 
   apiUrl: string = 'https://localhost:44347/api/app/scope';
   scopes: any[] = [];
-  newItem: any = {Description: ''};
+  newItem: any = {Scope: ''};
 
   constructor(private scopeService: CustomerSuccessService) { }
 
@@ -19,10 +19,10 @@ export class ScopeComponent {
   }
 
   loadProjects(): void {
-    console.log('Loading projects');
+    console.log('Loading scopes');
     this.scopeService.getProjects(this.apiUrl).subscribe(
       (data) => {
-        console.log('Projects:', data.items);
+        console.log('Project Scope:', data.items);
         // this.projects = data.items.map((item: any) => ({ Id: item.id, Description: item.description }));
         this.scopes = data.items;
       },

@@ -39,6 +39,8 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
     public DbSet<Stakeholder> Stakeholders { get; set; }
     public DbSet<Sprint> Sprints { get; set; }
     public DbSet<DetTimeRef> DetailedTimelineReference { get; set; }
+    public DbSet<ApprovedTeam> ApprovedTeam { get; set; }
+    public DbSet<ProjectUpdates> ProjectUpdates { get; set; }
     public DbSet<ApplicationUser> Users { get; set; }
 
 
@@ -135,6 +137,14 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         builder.Entity<DetTimeRef>(DetTimeRef =>
         {
             DetTimeRef.ConfigureByConvention();
+        });
+        builder.Entity<ApprovedTeam>(ApprovedTeam =>
+        {
+            ApprovedTeam.ConfigureByConvention();
+        });
+        builder.Entity<ProjectUpdates>(ProjectUpdates =>
+        {
+            ProjectUpdates.ConfigureByConvention();
         });
         builder.Entity<ApplicationUser>(ApplicationUser =>
         {

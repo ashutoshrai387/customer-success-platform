@@ -19,7 +19,7 @@ export class VersionHistoryComponent {
   }
 
   loadProjects(): void {
-    console.log('Loading projects');
+    console.log('Loading project versions');
     this.versionService.getProjects(this.apiUrl).subscribe(
       (data) => {
         console.log('Version History:', data.items);

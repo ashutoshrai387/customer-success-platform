@@ -1,14 +1,23 @@
 ﻿using System;
-using Volo.Abp.Application.Dtos;
+using System.ComponentModel.DataAnnotations;
 
 namespace Promact.CustomerSuccess.Platform.Services.Dtos
 {
-    public class MeetingMinuteDto : AuditedEntityDto<Guid>
+    public class CreateMeetingMinuteDto
     {
+        [Required]
         public Guid ProjectId { get; set; }
+
+        [Required]
         public DateTime MeetingDate { get; set; }
+
+        [Required]
         public string Duration { get; set; }
+
+        [Required]
         public string MoMLink { get; set; }
+
+        [Required]
         public string Comments { get; set; }
     }
 }

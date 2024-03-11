@@ -78,5 +78,29 @@ public class PlatformAutoMapperProfile : Profile
         CreateMap<UpdateDetTimeRefDto, DetTimeRef>();
         CreateMap<DetTimeRef, DetTimeRefDto>().ReverseMap();
 
+        /* AutoMapper object mapping for Approved Team*/
+        CreateMap<CreateApprovedTeamDto, ApprovedTeam>();
+        CreateMap<UpdateApprovedTeamDto, ApprovedTeam>();
+        CreateMap<ApprovedTeam, ApprovedTeamDto>().ReverseMap();
+
+        /* AutoMapper object mapping for Project Resources*/
+        CreateMap<CreateProjectResourcesDto, ProjectResources>();
+        CreateMap<UpdateProjectResourcesDto, ProjectResources>();
+        CreateMap<ProjectResources, ProjectResourcesDto>().ReverseMap();
+
+        /* AutoMapper object mapping for Client Feedback*/
+        CreateMap<CreateClientFeedbackDto, ClientFeedback>();
+        CreateMap<UpdateClientFeedbackDto, ClientFeedback>();
+        CreateMap<ClientFeedback, ClientFeedbackDto>().ReverseMap();
+
+        /* AutoMapper object mapping for Project Updates*/
+        CreateMap<CreateProjectUpdatesDto, ProjectUpdates>();
+        CreateMap<UpdateProjectUpdatesDto, ProjectUpdates>();
+        CreateMap<ProjectUpdates, ProjectUpdatesDto>().ReverseMap();
+
+        /* AutoMapper object mapping for Project Updates*/
+        CreateMap<CreateMeetingMinuteDto, MeetingMinute>();
+        CreateMap<UpdateMeetingMinuteDto, MeetingMinute>();
+        CreateMap<MeetingMinute, MeetingMinuteDto>().ReverseMap();
     }
 }

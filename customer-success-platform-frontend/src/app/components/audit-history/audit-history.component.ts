@@ -19,7 +19,7 @@ export class AuditHistoryComponent implements OnInit{
     }
   
     loadProjects(): void {
-      console.log('Loading projects');
+      console.log('Loading audits');
       this.auditService.getProjects(this.apiUrl).subscribe(
         (data) => {
           console.log('Audit History:', data.items);

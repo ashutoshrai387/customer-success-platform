@@ -13,9 +13,9 @@ table {
     background-color: #f2f2f2;
   }
   
-  .hidden {
+  /* .hidden {
     display: none;
-  }
+  } */
 
   button {
     margin-top: 10px;

@@ -11,18 +11,37 @@ loadComponent($event: Event) {
 throw new Error('Method not implemented.');
 }
 
-@ViewChild('content', {static:false}) el!: ElementRef
-
 title = "Customer Success Platform";
 
-exportPdf() {
-  let pdf = new jsPDF()
+// @ViewChild('content', {static:false}) el!: ElementRef
 
-  pdf.html(this.el.nativeElement, {
-    callback: (pdf) => {
-    //save pdf
-    pdf.save("customersuccess.pdf")
+// exportPdf() {
+//   let pdf = new jsPDF()
+
+//   pdf.html(this.el.nativeElement, {
+//     callback: (pdf) => {
+//     //save pdf
+//     pdf.save("customersuccess.pdf")
+//   }
+//   })
+// }
+
+@ViewChild('pdfcontent') contentToConvert!: ElementRef;
+
+  exportPdf() {
+    const pdf = new jsPDF('p', 'mm', 'a4'); // 'p' for portrait orientation
+      pdf.setFontSize(12);
+    const content = this.contentToConvert.nativeElement;
+
+    // Gather content from the components
+    const componentContent = content.innerHTML;
+
+    // Add content to PDF
+    pdf.html(componentContent, {
+      callback: (pdf) => {
+        // Save the PDF
+        pdf.save('generated.pdf');
+      }
+    });
   }
-  })
-}
 }

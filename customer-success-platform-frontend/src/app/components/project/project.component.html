@@ -11,7 +11,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of projects; let i = index">
-          <td class="hidden"><input type="text" [(ngModel)]="item.id" [readOnly]="!item.editing"></td>
+            <td class="hidden"><input type="text" [(ngModel)]="item.id" [readOnly]="true" placeholder="Will be created automatically"></td>
           <td><input type="text" [(ngModel)]="item.name" [readOnly]="!item.editing"></td>
           <td><input type="text" [(ngModel)]="item.description" [readOnly]="!item.editing"></td>
           <td>

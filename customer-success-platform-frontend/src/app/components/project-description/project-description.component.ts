@@ -19,10 +19,10 @@ export class ProjectDescriptionComponent {
   }
 
   loadProjects(): void {
-    console.log('Loading projects');
+    console.log('Loading descriptions');
     this.projectDescriptionService.getProjects(this.apiUrl).subscribe(
       (data) => {
-        console.log('Projects:', data.items);
+        console.log('Project Descriptions:', data.items);
         // this.projects = data.items.map((item: any) => ({ Id: item.id, Description: item.description }));
         this.descriptions = data.items;
       },
