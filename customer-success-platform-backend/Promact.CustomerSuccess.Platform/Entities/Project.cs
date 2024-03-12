@@ -10,7 +10,7 @@ namespace Promact.CustomerSuccess.Platform.Entities
         public virtual ICollection<Document>? Documents { get; set; }
         public virtual ICollection<ProjectBudget>? Budgets { get; set; }
         //public virtual ICollection<VersionHistory>? VersionHistory { get; set; }
-        //public virtual ICollection<AuditHistory>? AuditHistory { get; set; }
+        public virtual ICollection<AuditHistory>? AuditHistory { get; set; }
         //public virtual ICollection<ProjectDescription>? ProjectDescription { get; set; }
         //public virtual ICollection<Scope>? Scope { get; set; }
         //public virtual ICollection<ProjectStack>? ProjectStack { get; set; }

@@ -7,8 +7,8 @@ import { ProjectDescriptionComponent } from './components/project-description/pr
 import { ScopeComponent } from './components/scope/scope.component';
 import { ProjectStackComponent } from './components/project-stack/project-stack.component';
 
-export const routes: Routes = [
-  { path: '/', component: ProjectComponent },
+const routes: Routes = [
+  { path: '', component: ProjectComponent },
   { path: 'project', component:  ProjectComponent },
   { path: 'audithistory', component:  AuditHistoryComponent},
   { path: 'versionhistory', component:  VersionHistoryComponent},

@@ -12,5 +12,6 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
         public double BudgetedCost { get; set; }
         [Required]
         public required string Currency { get; set; }
+        public Guid ProjectId { get; set; }
     }
 }

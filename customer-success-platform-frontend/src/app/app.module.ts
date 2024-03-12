@@ -3,9 +3,10 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
-import { RouterTestingModule } from "@angular/router/testing";
+// import { RouterModule } from '@angular/router';
+// import { RouterTestingModule } from "@angular/router/testing";
 import { ProjectComponent } from './components/project/project.component';
 import { CustomerSuccessService } from './services/customer-success.service';
 import { AuditHistoryComponent } from './components/audit-history/audit-history.component';
@@ -26,15 +27,16 @@ import { ProjectStackComponent } from './components/project-stack/project-stack.
   ],
   imports: [
     BrowserModule,
-    RouterModule,
-    RouterTestingModule,
+    AppRoutingModule,
+    // RouterModule,
+    // RouterTestingModule,
     FormsModule,
     HttpClientModule,
   ],
   providers: [
     provideClientHydration(),
     CustomerSuccessService,
-    RouterModule,
+    // RouterModule,
   ],
   bootstrap: [AppComponent]
 })

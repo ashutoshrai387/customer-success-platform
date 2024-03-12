@@ -10,6 +10,7 @@ export class ProjectComponent implements OnInit {
 
   apiUrl: string = 'https://localhost:44347/api/app/project';
   projects: any[] = [];
+  // selectedProjectId: string = '';
   newItem: any = {Name: '', Description: ''};
 
   constructor(private projectService: CustomerSuccessService) { }
@@ -31,6 +32,20 @@ export class ProjectComponent implements OnInit {
       }
     );
   }
+
+  // onProjectChange(): void {
+  //   if (this.selectedProjectId) {
+  //     this.projectService.getProjectById(this.apiUrl, this.selectedProjectId).subscribe(
+  //       (projectData) => {
+  //         console.log('Selected Project Data:', projectData);
+  //         // Here, you can update other components with the fetched data
+  //       },
+  //       (error) => {
+  //         console.error('Error fetching project data:', error);
+  //       }
+  //     );
+  //   }
+  // }
 
   addItem(): void {
     this.projects.push({ ...this.newItem, editing: true });

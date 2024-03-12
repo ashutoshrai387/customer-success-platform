@@ -15,6 +15,10 @@ export class CustomerSuccessService {
     return this.http.get<any>(apiUrl);
   }
 
+  // getProjectById(apiUrl: string, id: string): Observable<{totalCount:number,items:any[]}> {
+  //   return this.http.get<any>(`${apiUrl}/${id}`);
+  // }
+
   addProject(apiUrl: string, project: any): Observable<any> {
     return this.http.post<any>(apiUrl, project);
   }

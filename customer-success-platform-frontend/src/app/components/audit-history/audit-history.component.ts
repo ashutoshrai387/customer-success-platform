@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,Input,SimpleChanges } from '@angular/core';
 import { CustomerSuccessService } from '../../services/customer-success.service';
 
 @Component({
@@ -6,11 +6,13 @@ import { CustomerSuccessService } from '../../services/customer-success.service'
   templateUrl: './audit-history.component.html',
   styleUrl: './audit-history.component.css'
 })
+
 export class AuditHistoryComponent implements OnInit{
+  // @Input() projectId: string = '';
 
     private apiUrl = 'https://localhost:44347/api/app/audit-history';
     audits: any[] = [];
-    newItem: any = {'Date Of Audit': '', 'Reviewed By': '',Status: '', 'Reviewed Section': '','Comment Queries': '', 'Action Item': ''};
+    newItem: any = {'Date Of Audit': '', 'Reviewed By': '',Status: '', 'Reviewed Section': '','Comment Queries': '', 'Action Item': '', 'Project Id': ''};
   
     constructor(private auditService: CustomerSuccessService) { }
   
@@ -24,13 +26,21 @@ export class AuditHistoryComponent implements OnInit{
         (data) => {
           console.log('Audit History:', data.items);
           // this.audits = data.items.map((item: any) => ({ Id: item.id, DateOfAudit: item.dateOfAudit, ReviewedBy: item.reviewedBy,Status: item.status, ReviewedSection: item.reviewedSection, CommentQueries: item.commentQueries,ActionItem: item.actionItem }));
-        this.audits = data.items;
+          this.audits = data.items;
         },
         (error) => {
           console.log('Error fetching projects:', error);
         }
       );
     }
+  
+
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   if (changes['selectedProjectId'] && !changes['selectedProjectId'].firstChange) {
+  //     this.loadProjects();
+      
+  //   }
+  // }
   
     addItem(): void {
       this.audits.push({ ...this.newItem, editing: true });
