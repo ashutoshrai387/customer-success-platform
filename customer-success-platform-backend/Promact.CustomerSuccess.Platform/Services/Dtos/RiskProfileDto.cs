@@ -8,8 +8,11 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
     {
         public Guid ProjectId { get; set; }
         public RiskType RiskType { get; set; }
+        public string Description { get; set; }
         public RiskSeverity Severity { get; set; }
         public RiskImpact Impact { get; set; }
-        public ICollection<RemediationStepDto> RemediationSteps { get; set; }
+        public string RemedialSteps { get; set; }
+        public string Status { get; set; }
+        public DateTime ClosureDate { get; set; }
     }
 }

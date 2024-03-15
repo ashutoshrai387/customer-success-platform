@@ -16,5 +16,6 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
 
         [Required]
         public string Email { get; set; }
+        public Guid ProjectId { get; set; }
     }
 }

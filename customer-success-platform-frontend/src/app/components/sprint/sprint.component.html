@@ -1,0 +1,40 @@
+<section>
+    <h1>Sprint</h1>
+    <div>
+          <table class="mat-elevation-z8">
+            <thead>
+              <tr>
+                <th class="hidden">ID</th>
+                <th class="hidden">Project Id</th>
+                <th>Sprint No.</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Status</th>
+                <th>Goals</th>
+                <th>Comments</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of sprints; let i = index">
+                <ng-container *ngIf="!projectId || item.projectId === projectId">
+                <td class="hidden"><input type="text" [(ngModel)]="item.id" [readOnly]="!item.editing"></td>
+                <td class="hidden"><input type="text" [(ngModel)]="item.projectId" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.sprintNumber" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.startDate" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.endDate" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.status" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.goals" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.comments" [readOnly]="!item.editing"></td>
+                <td>
+                  <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
+                  <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>
+                  <button class="red" (click)="deleteItem(i, item.id)">Delete</button>
+                </td></ng-container>
+              </tr>
+            </tbody>
+          </table>
+        
+          <button class="green" (click)="addItem(projectId)">Add</button>
+        </div>
+    </section>

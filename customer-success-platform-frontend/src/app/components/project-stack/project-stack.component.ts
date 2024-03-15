@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { CustomerSuccessService } from '../../services/customer-success.service';
 
 @Component({
@@ -7,10 +7,10 @@ import { CustomerSuccessService } from '../../services/customer-success.service'
   styleUrl: './project-stack.component.css'
 })
 export class ProjectStackComponent {
-
+  @Input() projectId!: string;
   apiUrl: string = 'https://localhost:44347/api/app/project-stack';
   projectStacks: any[] = [];
-  newItem: any = {Name: ''};
+  
 
   constructor(private projectStackService: CustomerSuccessService) { }
 
@@ -22,9 +22,9 @@ export class ProjectStackComponent {
     console.log('Loading stacks');
     this.projectStackService.getProjects(this.apiUrl).subscribe(
       (data) => {
-        console.log('Project Stacks:', data.items);
-        // this.projects = data.items.map((item: any) => ({ Id: item.id, Name: item.name }));
-        this.projectStacks = data.items;
+        console.log('value: ', data.items);
+          console.log('Project Stacks:', data.items);
+          this.projectStacks = data.items;
       },
       (error) => {
         console.log('Error fetching projects:', error);
@@ -32,9 +32,10 @@ export class ProjectStackComponent {
     );
   }
 
-  addItem(): void {
-    this.projectStacks.push({ ...this.newItem, editing: true });
-    this.newItem = { Name: '', Description: '' }; // Clear newItem after adding
+  addItem(projectId: string): void {
+    let newItem = {projectId, Name: '', editing: true};
+    this.projectStacks.push(newItem);
+    newItem = {projectId, Name: '', editing: true}; 
   }
 
   editItem(index: number): void {
@@ -44,8 +45,6 @@ export class ProjectStackComponent {
   saveItem(index: number, id : string): void {
     const project = this.projectStacks[index];
     if (id) {
-      // Update existing project
-      
     console.log('Updating project with id:', id); 
       this.projectStackService.updateProject(this.apiUrl, id, project).subscribe({
         next: () => {
@@ -57,7 +56,6 @@ export class ProjectStackComponent {
         }
       });
     } else {
-      // Add new project
       console.log('Adding project'); 
       this.projectStackService.addProject(this.apiUrl, project).subscribe({
         next: () => {
@@ -69,7 +67,6 @@ export class ProjectStackComponent {
         }
       });
     }
-    
   }
 
   deleteItem(index: number,id: string): void {

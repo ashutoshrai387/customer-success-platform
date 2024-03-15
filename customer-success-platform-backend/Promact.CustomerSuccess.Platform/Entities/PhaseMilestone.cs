@@ -3,7 +3,7 @@ using Volo.Abp.Domain.Entities.Auditing;
 
 namespace Promact.CustomerSuccess.Platform.Entities
 {
-    public class PhaseMilestone : AuditedAggregateRootWithUser<Guid, ApplicationUser>
+    public class PhaseMilestone : AuditedEntity<Guid>
     {
         [ForeignKey("Project")]
         public Guid ProjectId { get; set; }
@@ -15,11 +15,6 @@ namespace Promact.CustomerSuccess.Platform.Entities
         public DateTime RevisedEndDate{ get; set; }
         public MilestoneOrPhaseStatus Status { get; set; }
         public virtual Project? Project { get; set; }
-        public virtual ICollection<Sprint>? Sprints { get; set; }
-
-        public override object?[] GetKeys()
-        {
-            throw new NotImplementedException();
-        }
+        public virtual ICollection<ApprovedTeam>? ApprovedTeam { get; set; }
     }
 }

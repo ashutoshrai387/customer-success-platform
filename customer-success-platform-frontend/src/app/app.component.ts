@@ -13,19 +13,6 @@ throw new Error('Method not implemented.');
 
 title = "Customer Success Platform";
 
-// @ViewChild('content', {static:false}) el!: ElementRef
-
-// exportPdf() {
-//   let pdf = new jsPDF()
-
-//   pdf.html(this.el.nativeElement, {
-//     callback: (pdf) => {
-//     //save pdf
-//     pdf.save("customersuccess.pdf")
-//   }
-//   })
-// }
-
 @ViewChild('pdfcontent') contentToConvert!: ElementRef;
 
   exportPdf() {

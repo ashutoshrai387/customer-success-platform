@@ -1,0 +1,105 @@
+<section>
+    <h1 class="head">Escalation Matrix</h1>
+    <div>
+        <h4>Operational Escalation Matrix</h4>
+          <table class="mat-elevation-z8">
+            <thead>
+              <tr>
+                <th class="hidden">ID</th>
+                <th class="hidden">Project Id</th>
+                <th class="hidden">Escalation Type</th>
+                <th>Escalation Level</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of escalations; let i = index">
+                <ng-container *ngIf="!projectId || item.projectId === projectId && item.escalationType === 0">
+                <td class="hidden"><input type="text" [(ngModel)]="item.id" [readOnly]="!item.editing"></td>
+                <td class="hidden"><input type="text" [(ngModel)]="item.projectId" [readOnly]="!item.editing"></td>
+                <td class="hidden"><input type="text" [(ngModel)]="item.escalationType" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.level" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.name" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.role" [readOnly]="!item.editing"></td>
+                <td>
+                  <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
+                  <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>
+                  <button class="red" (click)="deleteItem(i, item.id)">Delete</button>
+                </td></ng-container>
+              </tr>
+            </tbody>
+          </table>
+        
+        <button class="green" (click)="addItem(projectId,0)">Add</button>
+    </div>
+    <div>
+        <h4>Financial Escalation Matrix</h4>
+      <table class="mat-elevation-z8">
+        <thead>
+          <tr>
+            <th class="hidden">ID</th>
+            <th class="hidden">Project Id</th>
+            <th class="hidden">Escalation Type</th>
+            <th>Escalation Level</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of escalations; let i = index">
+            <ng-container *ngIf="!projectId || item.projectId === projectId && item.escalationType === 1">
+            <td class="hidden"><input type="text" [(ngModel)]="item.id" [readOnly]="!item.editing"></td>
+            <td class="hidden"><input type="text" [(ngModel)]="item.projectId" [readOnly]="!item.editing"></td>
+            <td class="hidden"><input type="text" [(ngModel)]="item.escalationType" [readOnly]="!item.editing"></td>
+            <td><input type="text" [(ngModel)]="item.level" [readOnly]="!item.editing"></td>
+            <td><input type="text" [(ngModel)]="item.name" [readOnly]="!item.editing"></td>
+            <td><input type="text" [(ngModel)]="item.role" [readOnly]="!item.editing"></td>
+            <td>
+              <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
+              <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>
+              <button class="red" (click)="deleteItem(i, item.id)">Delete</button>
+            </td></ng-container>
+          </tr>
+        </tbody>
+      </table>
+    
+      <button class="green" (click)="addItem(projectId,1)">Add</button>
+</div>
+<div>
+    <h4>Technical Escalation Matrix</h4>
+  <table class="mat-elevation-z8">
+    <thead>
+      <tr>
+        <th class="hidden">ID</th>
+        <th class="hidden">Project Id</th>
+        <th class="hidden">Escalation Type</th>
+        <th>Escalation Level</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of escalations; let i = index">
+        <ng-container *ngIf="!projectId || item.projectId === projectId && item.escalationType === 2">
+        <td class="hidden"><input type="text" [(ngModel)]="item.id" [readOnly]="!item.editing"></td>
+        <td class="hidden"><input type="text" [(ngModel)]="item.projectId" [readOnly]="!item.editing"></td>
+        <td class="hidden"><input type="text" [(ngModel)]="item.escalationType" [readOnly]="!item.editing"></td>
+        <td><input type="text" [(ngModel)]="item.level" [readOnly]="!item.editing"></td>
+        <td><input type="text" [(ngModel)]="item.name" [readOnly]="!item.editing"></td>
+        <td><input type="text" [(ngModel)]="item.role" [readOnly]="!item.editing"></td>
+        <td>
+          <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
+          <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>
+          <button class="red" (click)="deleteItem(i, item.id)">Delete</button>
+        </td></ng-container>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="green" (click)="addItem(projectId,2)">Add</button>
+</div>
+</section>

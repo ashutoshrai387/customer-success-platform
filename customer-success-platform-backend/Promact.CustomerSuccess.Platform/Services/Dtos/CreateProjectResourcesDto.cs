@@ -9,10 +9,10 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
         public Guid ProjectId { get; set; }
 
         [Required]
-        public Guid ResourceId { get; set; }
+        public string ResourceName { get; set; }
 
         [Required]
-        public double AllocationPercentage { get; set; }
+        public string Role { get; set; }
 
         [Required]
         public DateTime Start { get; set; }
@@ -21,6 +21,7 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
         public DateTime End { get; set; }
 
         [Required]
-        public string Role { get; set; }
+        public string Comment { get; set; }
+
     }
 }

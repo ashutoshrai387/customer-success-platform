@@ -9,6 +9,7 @@ namespace Promact.CustomerSuccess.Platform.Entities
         public required ChangeType ChangeType { get; set; }
         public string? Changes { get; set; }
         public string? ChangeReason { get; set; }
+
         [ForeignKey(nameof(Document))]
         public Guid DocumentId { get; set; }
         public virtual Document? Document { get; set; }

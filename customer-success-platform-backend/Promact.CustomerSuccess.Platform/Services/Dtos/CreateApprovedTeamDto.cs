@@ -19,5 +19,11 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
 
         [Required]
         public int Duration { get; set; }
+
+        [Required]
+        public Guid ProjectId { get; set; }
+
+        [Required]
+        public Guid PhaseMilestoneId { get; set; }
     }
 }

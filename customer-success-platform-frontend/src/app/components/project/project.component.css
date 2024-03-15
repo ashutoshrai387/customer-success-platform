@@ -15,7 +15,6 @@ div {
 table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #fff;
 }
     
 th, td {
@@ -23,11 +22,7 @@ th, td {
   padding: 8px;
   text-align: left;
 }
-    
-th {
-  background-color: #75b6da;
-}
-    
+
 .hidden {
   display: none;
 }

@@ -10,5 +10,7 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
         public string Role { get; set; }
         public int AvailabilityPercentage { get; set; }
         public int Duration { get; set; }
+        public Guid ProjectId { get; set; }
+        public Guid PhaseMilestoneId { get; set; }
     }
 }

@@ -26,5 +26,6 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
         public DateTime? ApprovalDate { get; set; }
 
         public required string ApprovedBy { get; set; }
+        public Guid ProjectId { get; set; }
     }
 }

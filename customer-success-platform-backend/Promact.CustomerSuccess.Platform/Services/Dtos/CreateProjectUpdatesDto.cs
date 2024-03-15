@@ -10,5 +10,8 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
 
         [Required]
         public string GeneralUpdates { get; set; }
+
+        [Required]
+        public Guid ProjectId { get; set; }
     }
 }

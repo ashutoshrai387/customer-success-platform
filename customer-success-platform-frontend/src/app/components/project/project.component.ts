@@ -24,7 +24,6 @@ export class ProjectComponent implements OnInit {
     this.projectService.getProjects(this.apiUrl).subscribe(
       (data) => {
         console.log('Projects:', data.items);
-        // this.projects = data.items.map((item: any) => ({ Id: item.id, Name: item.name, Description: item.description }));
         this.projects = data.items;
       },
       (error) => {
@@ -32,20 +31,6 @@ export class ProjectComponent implements OnInit {
       }
     );
   }
-
-  // onProjectChange(): void {
-  //   if (this.selectedProjectId) {
-  //     this.projectService.getProjectById(this.apiUrl, this.selectedProjectId).subscribe(
-  //       (projectData) => {
-  //         console.log('Selected Project Data:', projectData);
-  //         // Here, you can update other components with the fetched data
-  //       },
-  //       (error) => {
-  //         console.error('Error fetching project data:', error);
-  //       }
-  //     );
-  //   }
-  // }
 
   addItem(): void {
     this.projects.push({ ...this.newItem, editing: true });
@@ -59,8 +44,6 @@ export class ProjectComponent implements OnInit {
   saveItem(index: number, id : string): void {
     const project = this.projects[index];
     if (id) {
-      // Update existing project
-      
     console.log('Updating project with id:', id); 
       this.projectService.updateProject(this.apiUrl, id, project).subscribe({
         next: () => {
@@ -72,7 +55,6 @@ export class ProjectComponent implements OnInit {
         }
       });
     } else {
-      // Add new project
       console.log('Adding project'); 
       this.projectService.addProject(this.apiUrl, project).subscribe({
         next: () => {

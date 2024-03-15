@@ -13,19 +13,14 @@ div {
 }
 
 table {
-  width: 100%;
+  max-width: 600px;
   border-collapse: collapse;
-  background-color: #fff;
 }
     
 th, td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
-}
-    
-th {
-  background-color: #75b6da;
 }
     
 .hidden {
@@ -58,4 +53,5 @@ input {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ddd;
+  width: 300px;
 }

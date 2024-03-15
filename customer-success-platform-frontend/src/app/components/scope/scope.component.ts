@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { CustomerSuccessService } from '../../services/customer-success.service';
 
 @Component({
@@ -7,11 +7,10 @@ import { CustomerSuccessService } from '../../services/customer-success.service'
   styleUrl: './scope.component.css'
 })
 export class ScopeComponent {
-
+  @Input() projectId!: string;
   apiUrl: string = 'https://localhost:44347/api/app/scope';
   scopes: any[] = [];
-  newItem: any = {Scope: ''};
-
+  
   constructor(private scopeService: CustomerSuccessService) { }
 
   ngOnInit(): void {
@@ -23,7 +22,6 @@ export class ScopeComponent {
     this.scopeService.getProjects(this.apiUrl).subscribe(
       (data) => {
         console.log('Project Scope:', data.items);
-        // this.projects = data.items.map((item: any) => ({ Id: item.id, Description: item.description }));
         this.scopes = data.items;
       },
       (error) => {
@@ -32,9 +30,10 @@ export class ScopeComponent {
     );
   }
 
-  addItem(): void {
-    this.scopes.push({ ...this.newItem, editing: true });
-    this.newItem = { Name: '', Description: '' }; // Clear newItem after adding
+  addItem(projectId: string): void {
+    let newItem = {projectId, Scope: '', editing: true};
+    this.scopes.push(newItem);
+    newItem = {projectId, Scope: '', editing: true}; 
   }
 
   editItem(index: number): void {
@@ -44,8 +43,6 @@ export class ScopeComponent {
   saveItem(index: number, id : string): void {
     const project = this.scopes[index];
     if (id) {
-      // Update existing project
-      
     console.log('Updating project with id:', id); 
       this.scopeService.updateProject(this.apiUrl, id, project).subscribe({
         next: () => {
@@ -57,7 +54,6 @@ export class ScopeComponent {
         }
       });
     } else {
-      // Add new project
       console.log('Adding project'); 
       this.scopeService.addProject(this.apiUrl, project).subscribe({
         next: () => {

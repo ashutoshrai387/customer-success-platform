@@ -58,11 +58,6 @@ public class PlatformAutoMapperProfile : Profile
         CreateMap<UpdateRiskProfileDto, RiskProfile>();
         CreateMap<RiskProfile, RiskProfileDto>().ReverseMap();
 
-        /* AutoMapper object mapping for RemediationStep */
-        CreateMap<CreateRemediationStepDto, RemediationStep>();
-        CreateMap<UpdateRemediationStepDto, RemediationStep>();
-        CreateMap<RemediationStep, RemediationStepDto>().ReverseMap();
-
         /* AutoMapper object mapping for PhaseMilestone */
         CreateMap<CreatePhaseMilestoneDto, PhaseMilestone>();
         CreateMap<UpdatePhaseMilestoneDto, PhaseMilestone>();

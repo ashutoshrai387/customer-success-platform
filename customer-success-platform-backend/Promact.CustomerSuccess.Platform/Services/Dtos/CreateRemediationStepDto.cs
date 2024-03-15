@@ -8,7 +8,8 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
         [Required]
         public string Description { get; set; }
         
-        [Required]
-        public Guid RiskProfileId { get; set; }
+        //[Required]
+        //public Guid RiskProfileId { get; set; }
+
     }
 }

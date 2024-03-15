@@ -5,13 +5,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CustomerSuccessService {
-  
-  // private apiUrl = 'https://localhost:44347/api/app/project';
 
   constructor(private http: HttpClient) { }
 
-  getProjects(apiUrl: string): Observable<{totalCount:number,items:any[]}> {
+  getProjects(apiUrl: string): Observable<{totalCount: number,items: any[]}> {
     return this.http.get<any>(apiUrl);
   }
 

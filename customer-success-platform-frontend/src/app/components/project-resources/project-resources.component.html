@@ -1,0 +1,38 @@
+<section>
+    <h1>Project Resources</h1>
+    <div>
+          <table class="mat-elevation-z8">
+            <thead>
+              <tr>
+                <th class="hidden">ID</th>
+                <th class="hidden">Project Id</th>
+                <th>Resource Name</th>
+                <th>Role</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Comment</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of resources; let i = index">
+                <ng-container *ngIf="!projectId || item.projectId === projectId">
+                <td class="hidden"><input type="text" [(ngModel)]="item.id" [readOnly]="!item.editing"></td>
+                <td class="hidden"><input type="text" [(ngModel)]="item.projectId" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.resourceName" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.role" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.start" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.end" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.comment" [readOnly]="!item.editing"></td>
+                <td>
+                  <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
+                  <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>
+                  <button class="red" (click)="deleteItem(i, item.id)">Delete</button>
+                </td></ng-container>
+              </tr>
+            </tbody>
+          </table>
+        
+          <button class="green" (click)="addItem(projectId)">Add</button>
+        </div>
+    </section>

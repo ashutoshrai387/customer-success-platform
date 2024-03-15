@@ -6,7 +6,7 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
     public class CreateSprintDto
     {
         [Required]
-        public Guid PhaseMilestoneId { get; set; }
+        public Guid ProjectId { get; set; }
 
         [Required]
         public DateTime StartDate { get; set; }

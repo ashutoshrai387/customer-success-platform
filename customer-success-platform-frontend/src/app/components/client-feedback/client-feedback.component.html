@@ -1,0 +1,39 @@
+<section>
+    <h1>Cient Feedback</h1>
+    <div>
+          <table class="mat-elevation-z8">
+            <thead>
+              <tr>
+                <th class="hidden">ID</th>
+                <th class="hidden">Project Id</th>
+                <th>Feedback Type</th>
+                <th>Date Received</th>
+                <th>Detailed Feedback</th>
+                <th>Action Taken</th>
+                <th>Closure Date</th>
+                <th>Action</th>
+              </tr> 
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of feedbacks; let i = index">
+                <ng-container *ngIf="!projectId || item.projectId === projectId">
+                <td class="hidden"><input type="text" [(ngModel)]="item.id" [readOnly]="!item.editing"></td>
+                <td class="hidden"><input type="text" [(ngModel)]="item.projectId" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.feedbackType" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.feedbackDate" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.details" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.actionTaken" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.closureDate" [readOnly]="!item.editing"></td>
+                <td>
+                  <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
+                  <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>
+                  <button class="red" (click)="deleteItem(i, item.id)">Delete</button>
+                </td>
+              </ng-container>
+              </tr>
+            </tbody>
+          </table>
+        
+          <button class="green" (click)="addItem(projectId)">Add</button>
+    </div>
+    </section>

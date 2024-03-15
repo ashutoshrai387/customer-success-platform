@@ -58,6 +58,10 @@
   .left-navbar ul :hover {
     background-color: #b4b4b4;
   }
+
+  .left-navbar ul :active {
+    background-color: #a6bfc9;
+  }
   
   .left-navbar li {
     padding: 10px 10px 10px 25px;

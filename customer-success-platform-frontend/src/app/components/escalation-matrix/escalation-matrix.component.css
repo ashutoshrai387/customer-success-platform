@@ -1,0 +1,56 @@
+section {
+    background-color: #fff;
+  }
+  
+  .head {
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+  
+  div {
+    overflow: auto;
+    padding: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+      
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+      
+  .hidden {
+    display: none;
+  }
+    
+  button {
+    margin-top: 10px;
+    margin-right: 20px;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+    
+  .blue {
+    background-color: #196ff0;
+  }
+    
+  .red {
+    background-color: #e62929;
+  }
+    
+  .green {
+    background-color: #4caf50;
+  }
+    
+  input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }

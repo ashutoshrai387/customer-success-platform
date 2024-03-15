@@ -6,5 +6,6 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
     public class DetTimeRefDto : AuditedEntityDto<Guid>
     {
         public string Link { get; set; }
+        public Guid ProjectId { get; set; }
     }
 }

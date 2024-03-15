@@ -1,0 +1,40 @@
+<section>
+    <h1>Approved Teams</h1>
+    <div>
+          <table class="mat-elevation-z8">
+            <thead>
+              <tr>
+                <th class="hidden">ID</th>
+                <th class="hidden">Project Id</th>
+                <th>Phase/Milestone Id</th>
+                <th>Phase</th>
+                <th>No. Of Resources</th>
+                <th>Role</th>
+                <th>Availability %</th>
+                <th>Duration</th>
+                <th>Action</th>
+              </tr> 
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of approvedTeams; let i = index">
+                <ng-container *ngIf="!projectId || item.projectId === projectId">
+                <td class="hidden"><input type="text" [(ngModel)]="item.id" [readOnly]="!item.editing"></td>
+                <td class="hidden"><input type="text" [(ngModel)]="item.projectId" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.phaseMilestoneId" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.phase" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.numberOfResources" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.role" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.availabilityPercentage" [readOnly]="!item.editing"></td>
+                <td><input type="text" [(ngModel)]="item.duration" [readOnly]="!item.editing"></td>
+                <td>
+                  <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
+                  <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>
+                  <button class="red" (click)="deleteItem(i, item.id)">Delete</button>
+                </td>
+              </ng-container>
+              </tr>
+            </tbody>
+          </table>
+          <button class="green" (click)="addItem(projectId)">Add</button>
+    </div>
+    </section>

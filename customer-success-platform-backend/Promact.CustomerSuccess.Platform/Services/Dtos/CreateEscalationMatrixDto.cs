@@ -10,7 +10,13 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
         
         [Required]
         public EscalationType EscalationType { get; set; }
-        
+
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        public string Role { get; set; }
+
         [Required]
         public Guid ProjectId { get; set; }
     }

@@ -1,27 +1,18 @@
 <section>
-<h1>Project Description</h1>
-<div>
-      <table>
-        <thead>
-          <tr>
-            <th class="hidden">ID</th>
-            <th>Description</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of descriptions; let i = index">
-            <td class="hidden"><input type="text" [(ngModel)]="item.id" [readOnly]="!item.editing"></td>
-            <td><input type="text" [(ngModel)]="item.description" [readOnly]="!item.editing"></td>
-            <td>
-              <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
-              <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>
-              <button class="red" (click)="deleteItem(i, item.id)">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+<h1>{{projectName}}</h1>
+
+    <mat-tab-group>
+      <mat-tab label="Scope & stack"><app-project-stack [projectId]="projectId"></app-project-stack><app-scope [projectId]="projectId"></app-scope></mat-tab>
+      <mat-tab label="Project Budget"><app-project-budget [projectId]="projectId"></app-project-budget></mat-tab>
+      <mat-tab label="Escalation Matrix"><app-escalation-matrix [projectId]="projectId"></app-escalation-matrix></mat-tab>
+      <mat-tab label="Stakeholders"><app-stakeholders [projectId]="projectId"></app-stakeholders></mat-tab>
+      <mat-tab label="Risk Profiles"><app-risk-profiles [projectId]="projectId"></app-risk-profiles></mat-tab>
+      <mat-tab label="Phases/Milestone"><app-phases-milestones [projectId]="projectId"></app-phases-milestones><app-approved-teams [projectId]="projectId" ></app-approved-teams></mat-tab>
+      <mat-tab label="Sprints"><app-sprint [projectId]="projectId"></app-sprint><app-det-timeline-reference [projectId]="projectId"></app-det-timeline-reference></mat-tab>
+      <mat-tab label="Project Resources"><app-project-resources [projectId]="projectId"></app-project-resources><app-client-feedback [projectId]="projectId"></app-client-feedback></mat-tab>
+      <mat-tab label="Project Updates"><app-project-updates [projectId]="projectId"></app-project-updates><app-meeting-minutes [projectId]="projectId"></app-meeting-minutes></mat-tab>
+      <mat-tab label="Version History"><app-version-history [projectId]="projectId"></app-version-history></mat-tab>
+      <mat-tab label="Audit History"><app-audit-history [projectId]="projectId"></app-audit-history></mat-tab>
+    </mat-tab-group>
+  </section>
     
-      <button class="green" (click)="addItem()">Add</button>
-    </div>
-</section>

@@ -1,7 +1,7 @@
 <section>
 <h1>Project</h1>
 <div >
-    <table>
+    <table class="mat-elevation-z8">
       <thead>
         <tr>
           <th class="hidden">ID</th>
@@ -13,9 +13,10 @@
       <tbody>
         <tr *ngFor="let item of projects; let i = index">
             <td class="hidden"><input type="text" [(ngModel)]="item.id" [readOnly]="true" placeholder="Will be created automatically"></td>
-            <td><input type="text" [(ngModel)]="item.name" [readOnly]="!item.editing"></td>
+            <td><a><input type="text" [(ngModel)]="item.name" [readOnly]="!item.editing"></a></td>
             <td><input type="text" [(ngModel)]="item.description" [readOnly]="!item.editing"></td>
             <td>
+              <button class="blue" *ngIf="!item.editing" (click)="editItem(i)" [routerLink]="['/projectdescription',item.id,item.name]">Open</button>
               <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
               <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>
               <button class="red" (click)="deleteItem(i, item.id)">Delete</button>
@@ -23,9 +24,6 @@
         </tr>
       </tbody>
     </table>
-    <!-- <select [(ngModel)]="selectedProjectId" (change)="onProjectChange()">
-      <option *ngFor="let project of projects" [value]="project.id">{{ project.name }}</option>
-    </select> -->
     
     <button class="green" (click)="addItem()">Add</button>
   </div>

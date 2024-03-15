@@ -1,18 +1,20 @@
 <section>
-<h1>Project Stack</h1>
+<h1 class="hidden">Project Stack</h1>
 <div>
-      <table>
+      <table class="mat-elevation-z8">
         <thead>
           <tr>
             <th class="hidden">ID</th>
-            <th>Name</th>
+            <th class="hidden">Project Id</th>
+            <th>Project Stack</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of projectStacks; let i = index">
+            <ng-container *ngIf="!projectId || item.projectId === projectId">
             <td class="hidden"><input type="text" [(ngModel)]="item.id" [readOnly]="!item.editing"></td>
-            <!-- <td><input type="select" [(ngModel)]="item.name" [readOnly]="!item.editing"></td> -->
+            <td class="hidden"><input type="text" [(ngModel)]="item.projectId" [readOnly]="!item.editing"></td>
             <td><select [(ngModel)]="item.name" [disabled]="!item.editing">
               <option value="Backend">Backend</option>
               <option value="Frontend">Frontend</option>
@@ -24,11 +26,11 @@
               <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
               <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>
               <button class="red" (click)="deleteItem(i, item.id)">Delete</button>
-            </td>
+            </td></ng-container>
           </tr>
         </tbody>
       </table>
     
-      <button class="green" (click)="addItem()">Add</button>
+      <button class="green" (click)="addItem(projectId)">Add</button>
     </div>
 </section>

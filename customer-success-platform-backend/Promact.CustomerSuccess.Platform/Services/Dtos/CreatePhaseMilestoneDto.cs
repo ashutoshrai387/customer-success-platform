@@ -29,7 +29,6 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
 
         [Required]
         public MilestoneOrPhaseStatus Status { get; set; }
-
-        public ICollection<SprintDto> Sprints { get; set; }
+        public IEnumerable<ApprovedTeamDto>? ApprovedTeamDto { get; set; }
     }
 }
