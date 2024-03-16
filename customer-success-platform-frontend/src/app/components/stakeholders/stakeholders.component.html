@@ -1,7 +1,7 @@
 <section>
     <h1>Stakeholders</h1>
     <div>
-          <table class="mat-elevation-z8">
+          <table class="mat-elevation-z8" id="dataTable">
             <thead>
               <tr>
                 <th class="hidden">ID</th>
@@ -25,11 +25,13 @@
                 <td>
                   <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
                   <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>
-                  <button class="red" (click)="deleteItem(i, item.id)">Delete</button>
+                  <button class="red" *ngIf="item.editing" (click)="cancelItem(i, item.id)">Cancel</button>
+                  <button class="red" *ngIf="!item.editing" (click)="deleteItem(i, item.id)">Delete</button>
                 </td></ng-container>
               </tr>
             </tbody>
           </table>
           <button class="green" (click)="addItem(projectId)">Add</button>
+          <button class="green" (click)="exportPdf()">Export Pdf</button>
         </div>
     </section>

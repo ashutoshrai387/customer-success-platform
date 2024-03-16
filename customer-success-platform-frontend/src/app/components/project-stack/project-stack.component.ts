@@ -27,15 +27,23 @@ export class ProjectStackComponent {
           this.projectStacks = data.items;
       },
       (error) => {
-        console.log('Error fetching projects:', error);
-      }
-    );
+        console.log('Error fetching Project Stacks:', error);
+      });
   }
 
   addItem(projectId: string): void {
     let newItem = {projectId, Name: '', editing: true};
     this.projectStacks.push(newItem);
     newItem = {projectId, Name: '', editing: true}; 
+  }
+
+  cancelItem(index: number, Id: string): void {
+    const project = this.projectStacks[index];
+    if (Id) {
+      project.editing = false; // Exit editing mode
+    } else {
+      this.projectStacks.splice(index, 1); // Remove project from projects array
+    }
   }
 
   editItem(index: number): void {
@@ -45,41 +53,41 @@ export class ProjectStackComponent {
   saveItem(index: number, id : string): void {
     const project = this.projectStacks[index];
     if (id) {
-    console.log('Updating project with id:', id); 
+    console.log('Updating Project Stacks with id:', id); 
       this.projectStackService.updateProject(this.apiUrl, id, project).subscribe({
         next: () => {
           project.editing = false; // Exit editing mode
           this.loadProjects(); // Reload projects
         },
         error: (error) => {
-          console.error('Error updating project:', error);
+          console.error('Error updating Project Stacks:', error);
         }
       });
     } else {
-      console.log('Adding project'); 
+      console.log('Adding Project Stacks'); 
       this.projectStackService.addProject(this.apiUrl, project).subscribe({
         next: () => {
           project.editing = false; // Exit editing mode
           this.loadProjects(); // Reload projects
         },
         error: (error) => {
-          console.error('Error adding project:', error);
+          console.error('Error adding Project Stacks:', error);
         }
       });
     }
   }
 
   deleteItem(index: number,id: string): void {
-    console.log('Deleting project with id:', id); 
+    console.log('Deleting Project Stacks with id:', id); 
     const project = this.projectStacks[index];
     this.projectStackService.deleteProject(this.apiUrl, id).subscribe(
       () => {
         this.projectStacks.splice(index, 1); // Remove project from projects array
-        console.log('Project deleted:', project);
+        console.log('Project Stacks deleted:', project);
         this.loadProjects();
       },
       (error) => {
-        console.error('Error deleting project:', error);
+        console.error('Error deleting Project Stacks:', error);
       }
     );
   }

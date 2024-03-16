@@ -25,7 +25,7 @@ export class ScopeComponent {
         this.scopes = data.items;
       },
       (error) => {
-        console.log('Error fetching projects:', error);
+        console.log('Error fetching project scopes:', error);
       }
     );
   }
@@ -36,6 +36,15 @@ export class ScopeComponent {
     newItem = {projectId, Scope: '', editing: true}; 
   }
 
+  cancelItem(index: number, Id: string): void {
+    const project = this.scopes[index];
+    if (Id) {
+      project.editing = false; // Exit editing mode
+    } else {
+      this.scopes.splice(index, 1); // Remove project from projects array
+    }
+  }
+
   editItem(index: number): void {
     this.scopes[index].editing = true;
   }
@@ -43,25 +52,25 @@ export class ScopeComponent {
   saveItem(index: number, id : string): void {
     const project = this.scopes[index];
     if (id) {
-    console.log('Updating project with id:', id); 
+    console.log('Updating project scopes with id:', id); 
       this.scopeService.updateProject(this.apiUrl, id, project).subscribe({
         next: () => {
           project.editing = false; // Exit editing mode
           this.loadProjects(); // Reload projects
         },
         error: (error) => {
-          console.error('Error updating project:', error);
+          console.error('Error updating project scopes:', error);
         }
       });
     } else {
-      console.log('Adding project'); 
+      console.log('Adding project scopes'); 
       this.scopeService.addProject(this.apiUrl, project).subscribe({
         next: () => {
           project.editing = false; // Exit editing mode
           this.loadProjects(); // Reload projects
         },
         error: (error) => {
-          console.error('Error adding project:', error);
+          console.error('Error adding project scopes:', error);
         }
       });
     }
@@ -69,16 +78,16 @@ export class ScopeComponent {
   }
 
   deleteItem(index: number,id: string): void {
-    console.log('Deleting project with id:', id); 
+    console.log('Deleting project scopes with id:', id); 
     const project = this.scopes[index];
     this.scopeService.deleteProject(this.apiUrl, id).subscribe(
       () => {
         this.scopes.splice(index, 1); // Remove project from projects array
-        console.log('Project deleted:', project);
+        console.log('Project scopes deleted:', project);
         this.loadProjects();
       },
       (error) => {
-        console.error('Error deleting project:', error);
+        console.error('Error deleting project scopes:', error);
       }
     );
   }

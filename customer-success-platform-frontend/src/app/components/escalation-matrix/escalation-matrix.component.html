@@ -26,6 +26,7 @@
                 <td>
                   <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
                   <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>
+                  <button class="red" *ngIf="item.editing" (click)="cancelItem(i, item.id)">Cancel</button>
                   <button class="red" (click)="deleteItem(i, item.id)">Delete</button>
                 </td></ng-container>
               </tr>
@@ -60,6 +61,7 @@
             <td>
               <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
               <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>
+              <button class="red" *ngIf="item.editing" (click)="cancelItem(i, item.id)">Cancel</button>
               <button class="red" (click)="deleteItem(i, item.id)">Delete</button>
             </td></ng-container>
           </tr>
@@ -94,7 +96,8 @@
         <td>
           <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
           <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>
-          <button class="red" (click)="deleteItem(i, item.id)">Delete</button>
+          <button class="red" *ngIf="item.editing" (click)="cancelItem(i, item.id)">Cancel</button>
+          <button class="red" *ngIf="!item.editing" (click)="deleteItem(i, item.id)">Delete</button>
         </td></ng-container>
       </tr>
     </tbody>

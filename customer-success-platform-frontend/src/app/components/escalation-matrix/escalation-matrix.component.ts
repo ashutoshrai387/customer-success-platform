@@ -19,14 +19,14 @@ export class EscalationMatrixComponent {
   }
 
   loadProjects(): void {
-    console.log('Loading scopes');
+    console.log('Loading escalations');
     this.escalationMatrixService.getProjects(this.apiUrl).subscribe(
       (data) => {
-        console.log('Project Scope:', data.items);
+        console.log('escalations:', data.items);
         this.escalations = data.items;
       },
       (error) => {
-        console.log('Error fetching projects:', error);
+        console.log('Error fetching escalations:', error);
       }
     );
   }
@@ -37,6 +37,15 @@ export class EscalationMatrixComponent {
     newItem = {projectId, escalationType, Duration: '', EscalationLevel: Number, Name: '', Role: '', editing: true}; // Clear newItem after adding
   }
 
+  cancelItem(index: number, Id: string): void {
+    const project = this.escalations[index];
+    if (Id) {
+      project.editing = false; // Exit editing mode
+    } else {
+      this.escalations.splice(index, 1); // Remove project from projects array
+    }
+  }
+
   editItem(index: number): void {
     this.escalations[index].editing = true;
   }
@@ -44,41 +53,41 @@ export class EscalationMatrixComponent {
   saveItem(index: number, id : string): void {
     const project = this.escalations[index];
     if (id) {
-    console.log('Updating project with id:', id); 
+    console.log('Updating escalations with id:', id); 
       this.escalationMatrixService.updateProject(this.apiUrl, id, project).subscribe({
         next: () => {
           project.editing = false; // Exit editing mode
           this.loadProjects(); // Reload projects
         },
         error: (error) => {
-          console.error('Error updating project:', error);
+          console.error('Error updating escalations:', error);
         }
       });
     } else {
-      console.log('Adding project'); 
+      console.log('Adding escalations'); 
       this.escalationMatrixService.addProject(this.apiUrl, project).subscribe({
         next: () => {
           project.editing = false; // Exit editing mode
           this.loadProjects(); // Reload projects
         },
         error: (error) => {
-          console.error('Error adding project:', error);
+          console.error('Error adding escalations:', error);
         }
       });
     }
   }
 
   deleteItem(index: number,id: string): void {
-    console.log('Deleting project with id:', id); 
+    console.log('Deleting escalations with id:', id); 
     const project = this.escalations[index];
     this.escalationMatrixService.deleteProject(this.apiUrl, id).subscribe(
       () => {
         this.escalations.splice(index, 1); // Remove project from projects array
-        console.log('Project deleted:', project);
+        console.log('escalations deleted:', project);
         this.loadProjects();
       },
       (error) => {
-        console.error('Error deleting project:', error);
+        console.error('Error deleting escalations:', error);
       }
     );
   }

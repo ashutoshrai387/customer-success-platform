@@ -10,7 +10,6 @@ export class ProjectComponent implements OnInit {
 
   apiUrl: string = 'https://localhost:44347/api/app/project';
   projects: any[] = [];
-  // selectedProjectId: string = '';
   newItem: any = {Name: '', Description: ''};
 
   constructor(private projectService: CustomerSuccessService) { }
@@ -35,6 +34,15 @@ export class ProjectComponent implements OnInit {
   addItem(): void {
     this.projects.push({ ...this.newItem, editing: true });
     this.newItem = { Name: '', Description: '' }; // Clear newItem after adding
+  }
+
+  cancelItem(index: number, Id: string): void {
+    const project = this.projects[index];
+    if (Id) {
+      project.editing = false; // Exit editing mode
+    } else {
+      this.projects.splice(index, 1); // Remove project from projects array
+    }
   }
 
   editItem(index: number): void {

@@ -1,7 +1,7 @@
 <section>
     <h1>Risk Profiles</h1>
     <div>
-          <table class="mat-elevation-z8">
+          <table class="mat-elevation-z8" id="dataTable">
             <thead>
               <tr>
                 <th class="hidden">ID</th>
@@ -19,25 +19,27 @@
             <tbody>
               <tr *ngFor="let item of riskProfiles; let i = index">
                 <ng-container *ngIf="!projectId || item.projectId === projectId">
-                <td class="hidden"><input type="text" [(ngModel)]="item.id" [readOnly]="!item.editing"></td>
-                <td class="hidden"><input type="text" [(ngModel)]="item.projectId" [readOnly]="!item.editing"></td>
-                <td><input type="text" [(ngModel)]="item.riskType" [readOnly]="!item.editing"></td>
-                <td><input type="text" [(ngModel)]="item.description" [readOnly]="!item.editing"></td>
-                <td><input type="text" [(ngModel)]="item.severity" [readOnly]="!item.editing"></td>
-                <td><input type="text" [(ngModel)]="item.impact" [readOnly]="!item.editing"></td>
-                <td><input type="text" [(ngModel)]="item.remedialSteps" [readOnly]="!item.editing"></td>
-                <td><input type="text" [(ngModel)]="item.status" [readOnly]="!item.editing"></td>
-                <td><input type="text" [(ngModel)]="item.closureDate" [readOnly]="!item.editing"></td>
+                  <td class="hidden"><input type="text" [(ngModel)]="item.id" [readOnly]="!item.editing"></td>
+                  <td class="hidden"><input type="text" [(ngModel)]="item.projectId" [readOnly]="!item.editing"></td>
+                  <td><input type="text" [(ngModel)]="item.riskType" [readOnly]="!item.editing"></td>
+                  <td><input type="text" [(ngModel)]="item.description" [readOnly]="!item.editing"></td>
+                  <td><input type="text" [(ngModel)]="item.severity" [readOnly]="!item.editing"></td>
+                  <td><input type="text" [(ngModel)]="item.impact" [readOnly]="!item.editing"></td>
+                  <td><input type="text" [(ngModel)]="item.remedialSteps" [readOnly]="!item.editing"></td>
+                  <td><input type="text" [(ngModel)]="item.status" [readOnly]="!item.editing"></td>
+                  <td><input type="text" [(ngModel)]="item.closureDate" [readOnly]="!item.editing"></td>
                 <td>
                   <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
                   <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>
-                  <button class="red" (click)="deleteItem(i, item.id)">Delete</button>
+                  <button class="red" *ngIf="item.editing" (click)="cancelItem(i, item.id)">Cancel</button>
+                  <button class="red" *ngIf="!item.editing" (click)="deleteItem(i, item.id)">Delete</button>
                 </td></ng-container>
               </tr>
             </tbody>
           </table>
         
           <button class="green" (click)="addItem(projectId)">Add</button>
+          <button class="green" (click)="exportPdf()">Export Pdf</button>
 
         </div>
     </section>
