@@ -1,7 +1,12 @@
 import { Component, Input } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { CustomerSuccessService } from '../../services/customer-success.service';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-risk-profiles',
@@ -97,7 +102,7 @@ export class RiskProfilesComponent {
   }
 
   exportPdf(): void {
-    const pdf = new jsPDF();
+    const pdfdoc = new jsPDF();
     const table = document.getElementById('dataTable');
     if (!table) {
       console.error('Table element not found.');
@@ -111,7 +116,7 @@ export class RiskProfilesComponent {
     const rows: string[][] = [];
   
     // Add heading to the PDF
-    pdf.text(heading, 13, 12); // Adjust position as needed
+    pdfdoc.text(heading, 13, 12); // Adjust position as needed
   
     // Extract table headers (columns)
     table.querySelectorAll('thead th').forEach((th, index) => {
@@ -141,12 +146,62 @@ export class RiskProfilesComponent {
     });
   
     // Add the visible data to the PDF
-    (pdf as any).autoTable({
+    (pdfdoc as any).autoTable({
       head: [columns],
       body: rows,
     });
   
     // Save the PDF with appropriate file name
-    pdf.save('RiskProfiles.pdf');
+    pdfdoc.save('RiskProfiles.pdf');
   }
+
+  // exportPdf(pdf: jsPDF): void {
+  //   const table = document.getElementById('dataTable');
+  //   if (!table) {
+  //     console.error('Table element not found.');
+  //     return;
+  //   }
+
+  //   const heading = 'Risk Profiles'; // Heading text
+  //   const columnsToInclude = ['Risk Type', 'Description', 'Severity', 'Impact', 'Remedial Steps', 'Status', 'Closure Date']; // Columns to include
+  //   const columns: string[] = [];
+  //   const columnIndices: number[] = []; // To store the indices of included columns
+  //   const rows: string[][] = [];
+
+  //   // Add heading to the PDF
+  //   pdf.text(heading, 13, 12); // Adjust position as needed
+
+  //   // Extract table headers (columns)
+  //   table.querySelectorAll('thead th').forEach((th, index) => {
+  //     const columnText = th.textContent?.trim();
+  //     if (columnText && columnsToInclude.includes(columnText)) {
+  //       columns.push(columnText);
+  //       columnIndices.push(index); // Store the index of included column
+  //     }
+  //   });
+
+  //   // Extract rows data
+  //   table.querySelectorAll('tbody tr').forEach(tr => {
+  //     const rowData: string[] = [];
+  //     tr.querySelectorAll('td').forEach((td, index) => {
+  //       // Check if the column index is included
+  //       if (columnIndices.includes(index)) {
+  //         const input = td.querySelector('input');
+  //         if (input) {
+  //           const inputElement = input as HTMLInputElement; // Type assertion
+  //           rowData.push(inputElement.value.trim());
+  //         } else {
+  //           rowData.push(td.textContent?.trim() || ''); // Use text content if no input found
+  //         }
+  //       }
+  //     });
+  //     rows.push(rowData);
+  //   });
+
+  //   // Add the visible data to the PDF
+  //   (pdf as any).autoTable({
+  //     head: [columns],
+  //     body: rows,
+  //   });
+  // }
 }

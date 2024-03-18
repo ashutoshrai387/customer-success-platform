@@ -28,7 +28,7 @@
             <td><input type="text" [(ngModel)]="item.actionItem" [readOnly]="!item.editing"></td>
             <td>
               <button class="blue" *ngIf="!item.editing" (click)="editItem(i)">Edit</button>
-              <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id)">Save</button>
+              <button class="blue" *ngIf="item.editing" (click)="saveItem(i, item.id);sendEmail(i)">Save</button>
               <button class="red" *ngIf="item.editing" (click)="cancelItem(i, item.id)">Cancel</button>
               <button class="red" *ngIf="!item.editing" (click)="deleteItem(i, item.id)">Delete</button>
             </td>

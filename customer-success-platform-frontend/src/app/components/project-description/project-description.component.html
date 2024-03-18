@@ -1,6 +1,6 @@
 <section>
-<h1>{{projectName}}</h1>
-
+  <h1>{{projectName}}</h1>
+  
     <mat-tab-group>
       <mat-tab label="Scope & stack"><app-project-stack [projectId]="projectId"></app-project-stack><app-scope [projectId]="projectId"></app-scope></mat-tab>
       <mat-tab label="Project Budget"><app-project-budget [projectId]="projectId"></app-project-budget></mat-tab>
@@ -14,5 +14,6 @@
       <mat-tab label="Version History"><app-version-history [projectId]="projectId"></app-version-history></mat-tab>
       <mat-tab label="Audit History"><app-audit-history [projectId]="projectId"></app-audit-history></mat-tab>
     </mat-tab-group>
+
   </section>
     

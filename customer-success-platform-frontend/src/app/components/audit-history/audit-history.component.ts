@@ -1,5 +1,6 @@
 import { Component,OnInit, Input } from '@angular/core';
 import { CustomerSuccessService } from '../../services/customer-success.service';
+import { EmailService } from '../../services/email.service';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 
@@ -14,12 +15,15 @@ export class AuditHistoryComponent implements OnInit{
 
     private apiUrl = 'https://localhost:44347/api/app/audit-history';
     audits: any[] = [];
+    stakeholders: any[] = [];
+    stakeholderNames: any[] = [];
+    stakeholderEmails: any[] = [];
     
-  
-    constructor(private auditService: CustomerSuccessService) { }
+    constructor(private auditService: CustomerSuccessService,private emailService: EmailService) { }
 
     ngOnInit(): void {
       this.loadProjects();
+      
     }
   
     loadProjects(): void {
@@ -33,6 +37,22 @@ export class AuditHistoryComponent implements OnInit{
           console.log('Error fetching audits:', error);
         }
       );
+    }
+    getNameEmail(): void {
+    this.emailService.getStakeholderEmail().subscribe(
+      (data) => {
+        console.log('Stakeholder Email:', data.items);
+        this.stakeholders = data.items;
+        for (let i = 0; i < this.stakeholders.length; i++) {
+          if(this.stakeholders[i].projectId === this.projectId){
+          this.stakeholderEmails.push(this.stakeholders[i].email);
+          this.stakeholderNames.push(this.stakeholders[i].name);
+          }}
+      },
+      (error) => {
+        console.log('Error fetching stakeholder email:', error);
+      }
+    );
     }
   
     addItem(projectId: string): void {
@@ -54,12 +74,36 @@ export class AuditHistoryComponent implements OnInit{
     editItem(index: number): void {
       this.audits[index].editing = true;
     }
+
+    sendEmail(index: number): void {
+      const project = this.audits[index];
+      console.log(project);
+      this.getNameEmail();
+          console.log('emails',this.stakeholderEmails);
+          console.log('emails',this.stakeholderNames);
+          const emailSubject = 'Audit Summary';
+          
+          for(let i = 0; i < this.stakeholderEmails.length; i++){
+            let emailContent = `Hello ${this.stakeholderNames[i]},\n\nPlease note that audit has been completed and here is the audit summary:\n\nDate Of Audit: ${project.dateOfAudit}\nReviewed By: ${project.reviewedBy}\nStatus: ${project.status}\nReviewed Section: ${project.reviewedSection}\nComment/Queries: ${project.commentQueries}\nAction Item: ${project.actionItem}\n\nThanks and Regards,\nPromact Infotech Pvt Ltd`;
+
+            this.emailService.sendEmailNotification(this.stakeholderEmails[i], emailSubject ,emailContent).subscribe({
+              next: () => {
+                console.log('Email notification sent successfully.');
+                this.stakeholderEmails = [];
+                this.stakeholderNames = [];
+              },
+              error: (error) => {
+                console.error('Error sending email notification:', error);
+              }
+            });
+          }
+
+    }
   
     saveItem(index: number, id : string): void {
       const project = this.audits[index];
       console.log(project);
       if (id) {
-        
       console.log('Updating audits with id:', id); 
         this.auditService.updateProject(this.apiUrl, id, project).subscribe({
           next: () => {
@@ -82,7 +126,6 @@ export class AuditHistoryComponent implements OnInit{
           }
         });
       }
-      
     }
   
     deleteItem(index: number,id: string): void {
