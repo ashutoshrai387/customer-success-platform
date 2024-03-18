@@ -1,32 +1,67 @@
 # Promact.CustomerSuccess.Platform
+A Customer success platform is a formal document that outlines the objectives, scope, stakeholders, and key deliverables of a project. It serves as a foundational document that provides clarity and direction to all project stakeholders, including team members, sponsors, and clients.
 
-##
+This project revolves around the development of the **Customer Success Platform Application**. This application will allow the Stakeholders to view all the details and updates about the Projects in real time. 
+
+### Project Overview
+1. Technical Implementation: The development of the application using Angular and .NET)
+2. Email Notification System: The functionality to send email notifications to stakeholders whenever there is a change or update within the application.
+3. Import as a Document: The 'Import as a Document' feature which allows the stakeholders to import updates as documents for offline reference.
+4. User Interface Development: Creating a user-friendly interface for stakeholders to view updates related to the project.
+
+### Reasons for Developing This Application
+The Customer Success Platform Application is being developed to address the following needs and objectives:
+1. Enhanced Communication: To improve communication and transparency by keeping stakeholders informed about relevant updates or changes within our system.
+2. Efficiency: To automate the process of notifying stakeholders, saving time and effort compared to manual notification methods.
+3. Improved Stakeholder Engagement: By providing stakeholders with timely updates, we aim to increase their engagement and satisfaction with our services.
+4. Competitive Advantage: By implementing this application, we can differentiate ourselves from competitors by offering a more transparent and responsive communication process.
+
+## Working of the Project
+### Dashboard
+![Dashboard](images/dashboard.png)
+
+This is the dashboard of the Customer Success Project. It will display all the Projects that are currently there. It also has the option to add a new project or edit the name and description of existing ones. The Delete Button will delete the Project. The Open Button will load the details related to the project.
+
+### Project Details
+![Project Details](images/stakeholders.png)
+
+On clicking the **Open** button in dashboard will open the details of that particular project. The Project Name(**Customer Success Platform** as example here) will be displayed on top. Below the Project name is a navbar which categorises the various informations related to the project (The details of Project Stakeholders is being displayed here as example. It provides the functionality to add, delete and update data columns for any particular field.  
+
+### Export Pdf
+![Project Details](images/stakeholders_pdf.png)
+
+On clicking the **Export Pdf** button will generate the pdf document for the data being displayed. This is the image of the pdf document for the **Stakeholders** table data.
+
+### Email Notification
+![Email Notification](images/email_notification.png)
+
+On making any changes like adding new data or editing existing ones will automatically send email notifications to the stakeholders of the project. Given above is the image of the email notification being received.  
 
 ## About this solution(Frontend)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.3.
 
-## Development server
+### Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+### Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+### Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+### Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+### Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+### Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
